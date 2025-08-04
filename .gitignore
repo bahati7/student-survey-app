@@ -1,0 +1,19 @@
+# WordPress
+wp-config.php
+
+# Directories
+/wp-content/uploads/
+/wp-content/cache/
+/wp-content/upgrade/
+/wp-content/wflogs/
+
+# Database
+*.sql
+
+# OS-specific files
+.DS_Store
+Thumbs.db
+
+# Local by Flywheel
+.idea/
+.env
