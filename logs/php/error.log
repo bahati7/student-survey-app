@@ -1,0 +1,6 @@
+[14-Aug-2025 12:09:27 UTC] PHP Parse error:  Unclosed '{' on line 16 in C:\Users\Constant\Local Sites\student-survey-app\app\public\wp-content\themes\student-survey-child\functions.php on line 33
+[14-Aug-2025 12:09:27 UTC] PHP Warning:  Trying to access array offset on value of type bool in C:\Users\Constant\Local Sites\student-survey-app\app\public\wp-includes\class-wp-recovery-mode-email-service.php on line 367
+[14-Aug-2025 12:09:27 UTC] PHP Warning:  Trying to access array offset on value of type bool in C:\Users\Constant\Local Sites\student-survey-app\app\public\wp-includes\class-wp-recovery-mode-email-service.php on line 368
+[14-Aug-2025 12:09:27 UTC] PHP Parse error:  Unclosed '{' on line 16 in C:\Users\Constant\Local Sites\student-survey-app\app\public\wp-content\themes\student-survey-child\functions.php on line 33
+[14-Aug-2025 12:13:44 UTC] PHP Parse error:  Unclosed '{' on line 17 in C:\Users\Constant\Local Sites\student-survey-app\app\public\wp-content\themes\student-survey-child\functions.php on line 46
+[14-Aug-2025 12:13:44 UTC] PHP Parse error:  Unclosed '{' on line 17 in C:\Users\Constant\Local Sites\student-survey-app\app\public\wp-content\themes\student-survey-child\functions.php on line 46
