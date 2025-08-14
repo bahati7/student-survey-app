@@ -32,11 +32,11 @@ function register_survey_cpt() {
         'not_found_in_trash' => __( 'No surveys found in Trash.', 'student-survey-child' )
     );
 
-    $capabilities = array(
+    $capabilities = array(                     
         'edit_post'          => 'edit_survey',
         'read_post'          => 'read_survey',
         'delete_post'        => 'delete_survey',
-        'edit_posts'         => 'edit_surveys',
+        'edit_posts'         => 'edit_surveys',        
         'edit_others_posts'  => 'edit_others_surveys',
         'publish_posts'      => 'publish_surveys',
         'read_private_posts' => 'read_private_surveys'
@@ -63,7 +63,38 @@ function register_survey_cpt() {
 
     );
 
-    register_post_type( 'survey', $args );
+    register_post_type( 'survey', $args );                                 
 }
 add_action( 'init', 'register_survey_cpt' );
 
+
+// manage capabilities for 'Instructor' and 'Administrator' roles
+function add_survey_caps() {
+    
+    $roles = array( 'administrator', 'instructor' );
+
+    foreach ( $roles as $the_role ) {
+
+        $role = get_role( $the_role );
+        if ( empty( $role ) ) {
+            continue;
+        }
+
+        $role->add_cap( 'edit_survey' );     
+        $role->add_cap( 'read_survey' );
+        $role->add_cap( 'delete_survey' );      
+        $role->add_cap( 'edit_surveys' );
+        $role->add_cap( 'edit_others_surveys' );
+        $role->add_cap( 'publish_surveys' );
+        $role->add_cap( 'read_private_surveys' );
+        $role->add_cap( 'delete_surveys' );     
+        $role->add_cap( 'delete_private_surveys' );
+        $role->add_cap( 'delete_published_surveys' );    
+        $role->add_cap( 'delete_others_surveys' ); 
+        $role->add_cap( 'edit_private_surveys' );
+        $role->add_cap( 'edit_published_surveys' );
+    }
+}
+add_action( 'admin_init', 'add_survey_caps' );
+
+         
