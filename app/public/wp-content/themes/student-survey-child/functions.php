@@ -135,3 +135,36 @@ function survey_details_meta_box_callback( $post ) {
     <?php
 }
 
+// Saving metabox data
+function survey_save_meta_box_data( $post_id ) {
+    if ( ! isset( $_POST['survey_details_meta_box_nonce'] ) ) {
+        return;
+    }
+
+    if ( ! wp_verify_nonce( $_POST['survey_details_meta_box_nonce'], 'survey_details_save_meta_box_data' ) ) {
+        return;
+    }
+
+    if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) {
+        return;
+    }
+
+    if ( ! current_user_can( 'edit_survey', $post_id ) ) {
+        return;
+    }
+
+    if ( isset( $_POST['survey_description'] ) ) {
+        update_post_meta( $post_id, '_survey_description', sanitize_textarea_field( $_POST['survey_description'] ) );
+    }
+
+    if ( isset( $_POST['survey_start_date'] ) ) {
+        update_post_meta( $post_id, '_survey_start_date', sanitize_text_field( $_POST['survey_start_date'] ) );
+    }
+
+    if ( isset( $_POST['survey_end_date'] ) ) {
+        update_post_meta( $post_id, '_survey_end_date', sanitize_text_field( $_POST['survey_end_date'] ) );
+    }
+}
+add_action( 'save_post', 'survey_save_meta_box_data' );
+
+?>
