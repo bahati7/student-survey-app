@@ -97,4 +97,41 @@ function add_survey_caps() {
 }
 add_action( 'admin_init', 'add_survey_caps' );
 
-         
+// Add meta boxes for custom fields
+function survey_add_meta_box() {
+    add_meta_box(
+        'survey_details',
+        'Survey Details',
+        'survey_details_meta_box_callback',
+        'survey',
+        'normal',
+        'high'
+    );
+}
+add_action( 'add_meta_boxes', 'survey_add_meta_box' );
+
+function survey_details_meta_box_callback( $post ) {
+    wp_nonce_field( 'survey_details_save_meta_box_data', 'survey_details_meta_box_nonce' );
+
+    $description = get_post_meta( $post->ID, '_survey_description', true );
+    $start_date  = get_post_meta( $post->ID, '_survey_start_date', true );
+    $end_date    = get_post_meta( $post->ID, '_survey_end_date', true );
+    ?>
+    <p>
+        <label for="survey_description">Description</label>
+        <br>
+        <textarea id="survey_description" name="survey_description" style="width:100%;"><?php echo esc_textarea( $description ); ?></textarea>
+    </p>
+    <p>
+        <label for="survey_start_date">Start Date</label>
+        <br>
+        <input type="date" id="survey_start_date" name="survey_start_date" value="<?php echo esc_attr( $start_date ); ?>" style="width:100%;">
+    </p>
+    <p>
+        <label for="survey_end_date">End Date</label>
+        <br>
+        <input type="date" id="survey_end_date" name="survey_end_date" value="<?php echo esc_attr( $end_date ); ?>" style="width:100%;">
+    </p>
+    <?php
+}
+
