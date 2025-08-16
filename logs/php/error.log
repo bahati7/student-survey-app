@@ -1,0 +1,114 @@
+[14-Aug-2025 12:09:27 UTC] PHP Parse error:  Unclosed '{' on line 16 in C:\Users\Constant\Local Sites\student-survey-app\app\public\wp-content\themes\student-survey-child\functions.php on line 33
+[14-Aug-2025 12:09:27 UTC] PHP Warning:  Trying to access array offset on value of type bool in C:\Users\Constant\Local Sites\student-survey-app\app\public\wp-includes\class-wp-recovery-mode-email-service.php on line 367
+[14-Aug-2025 12:09:27 UTC] PHP Warning:  Trying to access array offset on value of type bool in C:\Users\Constant\Local Sites\student-survey-app\app\public\wp-includes\class-wp-recovery-mode-email-service.php on line 368
+[14-Aug-2025 12:09:27 UTC] PHP Parse error:  Unclosed '{' on line 16 in C:\Users\Constant\Local Sites\student-survey-app\app\public\wp-content\themes\student-survey-child\functions.php on line 33
+[14-Aug-2025 12:13:44 UTC] PHP Parse error:  Unclosed '{' on line 17 in C:\Users\Constant\Local Sites\student-survey-app\app\public\wp-content\themes\student-survey-child\functions.php on line 46
+[14-Aug-2025 12:13:44 UTC] PHP Parse error:  Unclosed '{' on line 17 in C:\Users\Constant\Local Sites\student-survey-app\app\public\wp-content\themes\student-survey-child\functions.php on line 46
+[14-Aug-2025 19:27:20 UTC] PHP Parse error:  Unclosed '{' on line 72 in C:\Users\Constant\Local Sites\student-survey-app\app\public\wp-content\themes\student-survey-child\functions.php on line 76
+[14-Aug-2025 19:29:03 UTC] PHP Parse error:  Unclosed '{' on line 72 in C:\Users\Constant\Local Sites\student-survey-app\app\public\wp-content\themes\student-survey-child\functions.php on line 76
+[14-Aug-2025 19:29:14 UTC] PHP Parse error:  Unclosed '{' on line 72 in C:\Users\Constant\Local Sites\student-survey-app\app\public\wp-content\themes\student-survey-child\functions.php on line 76
+[14-Aug-2025 19:31:15 UTC] PHP Parse error:  Unclosed '{' on line 76 in C:\Users\Constant\Local Sites\student-survey-app\app\public\wp-content\themes\student-survey-child\functions.php on line 78
+[14-Aug-2025 19:32:45 UTC] PHP Parse error:  Unclosed '{' on line 76 in C:\Users\Constant\Local Sites\student-survey-app\app\public\wp-content\themes\student-survey-child\functions.php on line 78
+[14-Aug-2025 19:32:55 UTC] PHP Parse error:  Unclosed '{' on line 76 in C:\Users\Constant\Local Sites\student-survey-app\app\public\wp-content\themes\student-survey-child\functions.php on line 78
+[14-Aug-2025 19:33:06 UTC] PHP Parse error:  Unclosed '{' on line 76 in C:\Users\Constant\Local Sites\student-survey-app\app\public\wp-content\themes\student-survey-child\functions.php on line 83
+[14-Aug-2025 19:35:07 UTC] PHP Parse error:  Unclosed '{' on line 76 in C:\Users\Constant\Local Sites\student-survey-app\app\public\wp-content\themes\student-survey-child\functions.php on line 83
+[14-Aug-2025 19:37:08 UTC] PHP Parse error:  Unclosed '{' on line 76 in C:\Users\Constant\Local Sites\student-survey-app\app\public\wp-content\themes\student-survey-child\functions.php on line 83
+[14-Aug-2025 19:39:09 UTC] PHP Parse error:  Unclosed '{' on line 76 in C:\Users\Constant\Local Sites\student-survey-app\app\public\wp-content\themes\student-survey-child\functions.php on line 83
+[14-Aug-2025 19:41:10 UTC] PHP Parse error:  Unclosed '{' on line 76 in C:\Users\Constant\Local Sites\student-survey-app\app\public\wp-content\themes\student-survey-child\functions.php on line 83
+[14-Aug-2025 19:44:26 UTC] PHP Parse error:  Unclosed '{' on line 76 in C:\Users\Constant\Local Sites\student-survey-app\app\public\wp-content\themes\student-survey-child\functions.php on line 83
+[14-Aug-2025 19:46:27 UTC] PHP Parse error:  Unclosed '{' on line 76 in C:\Users\Constant\Local Sites\student-survey-app\app\public\wp-content\themes\student-survey-child\functions.php on line 83
+[14-Aug-2025 19:48:01 UTC] PHP Parse error:  Unclosed '{' on line 76 in C:\Users\Constant\Local Sites\student-survey-app\app\public\wp-content\themes\student-survey-child\functions.php on line 83
+[14-Aug-2025 19:48:12 UTC] PHP Parse error:  Unclosed '{' on line 76 in C:\Users\Constant\Local Sites\student-survey-app\app\public\wp-content\themes\student-survey-child\functions.php on line 83
+[14-Aug-2025 19:49:32 UTC] PHP Parse error:  Unclosed '{' on line 76 in C:\Users\Constant\Local Sites\student-survey-app\app\public\wp-content\themes\student-survey-child\functions.php on line 83
+[14-Aug-2025 19:49:43 UTC] PHP Parse error:  Unclosed '{' on line 76 in C:\Users\Constant\Local Sites\student-survey-app\app\public\wp-content\themes\student-survey-child\functions.php on line 83
+[14-Aug-2025 19:50:39 UTC] PHP Parse error:  Unclosed '{' on line 76 in C:\Users\Constant\Local Sites\student-survey-app\app\public\wp-content\themes\student-survey-child\functions.php on line 83
+[14-Aug-2025 19:50:49 UTC] PHP Parse error:  Unclosed '{' on line 76 in C:\Users\Constant\Local Sites\student-survey-app\app\public\wp-content\themes\student-survey-child\functions.php on line 83
+[14-Aug-2025 19:51:00 UTC] PHP Parse error:  Unclosed '{' on line 76 in C:\Users\Constant\Local Sites\student-survey-app\app\public\wp-content\themes\student-survey-child\functions.php on line 88
+[14-Aug-2025 19:53:01 UTC] PHP Parse error:  Unclosed '{' on line 76 in C:\Users\Constant\Local Sites\student-survey-app\app\public\wp-content\themes\student-survey-child\functions.php on line 86
+[14-Aug-2025 19:55:02 UTC] PHP Parse error:  Unclosed '{' on line 76 in C:\Users\Constant\Local Sites\student-survey-app\app\public\wp-content\themes\student-survey-child\functions.php on line 86
+[14-Aug-2025 19:57:03 UTC] PHP Parse error:  Unclosed '{' on line 76 in C:\Users\Constant\Local Sites\student-survey-app\app\public\wp-content\themes\student-survey-child\functions.php on line 86
+[14-Aug-2025 19:57:33 UTC] PHP Parse error:  Unclosed '{' on line 76 in C:\Users\Constant\Local Sites\student-survey-app\app\public\wp-content\themes\student-survey-child\functions.php on line 86
+[14-Aug-2025 19:57:44 UTC] PHP Parse error:  Unclosed '{' on line 76 in C:\Users\Constant\Local Sites\student-survey-app\app\public\wp-content\themes\student-survey-child\functions.php on line 86
+[14-Aug-2025 19:59:45 UTC] PHP Parse error:  Unclosed '{' on line 76 in C:\Users\Constant\Local Sites\student-survey-app\app\public\wp-content\themes\student-survey-child\functions.php on line 89
+[14-Aug-2025 20:01:46 UTC] PHP Parse error:  Unclosed '{' on line 76 in C:\Users\Constant\Local Sites\student-survey-app\app\public\wp-content\themes\student-survey-child\functions.php on line 89
+[14-Aug-2025 20:03:47 UTC] PHP Parse error:  Unclosed '{' on line 76 in C:\Users\Constant\Local Sites\student-survey-app\app\public\wp-content\themes\student-survey-child\functions.php on line 89
+[14-Aug-2025 20:05:48 UTC] PHP Parse error:  Unclosed '{' on line 76 in C:\Users\Constant\Local Sites\student-survey-app\app\public\wp-content\themes\student-survey-child\functions.php on line 89
+[14-Aug-2025 20:07:00 UTC] PHP Parse error:  Unclosed '{' on line 76 in C:\Users\Constant\Local Sites\student-survey-app\app\public\wp-content\themes\student-survey-child\functions.php on line 89
+[14-Aug-2025 20:07:10 UTC] PHP Parse error:  Unclosed '{' on line 76 in C:\Users\Constant\Local Sites\student-survey-app\app\public\wp-content\themes\student-survey-child\functions.php on line 89
+[14-Aug-2025 20:07:21 UTC] PHP Parse error:  Unclosed '{' on line 76 in C:\Users\Constant\Local Sites\student-survey-app\app\public\wp-content\themes\student-survey-child\functions.php on line 92
+[14-Aug-2025 20:09:22 UTC] PHP Parse error:  Unclosed '{' on line 76 in C:\Users\Constant\Local Sites\student-survey-app\app\public\wp-content\themes\student-survey-child\functions.php on line 91
+[14-Aug-2025 20:11:23 UTC] PHP Parse error:  Unclosed '{' on line 76 in C:\Users\Constant\Local Sites\student-survey-app\app\public\wp-content\themes\student-survey-child\functions.php on line 91
+[14-Aug-2025 20:13:24 UTC] PHP Parse error:  Unclosed '{' on line 76 in C:\Users\Constant\Local Sites\student-survey-app\app\public\wp-content\themes\student-survey-child\functions.php on line 91
+[14-Aug-2025 20:15:25 UTC] PHP Parse error:  Unclosed '{' on line 76 in C:\Users\Constant\Local Sites\student-survey-app\app\public\wp-content\themes\student-survey-child\functions.php on line 91
+[14-Aug-2025 20:17:26 UTC] PHP Parse error:  Unclosed '{' on line 76 in C:\Users\Constant\Local Sites\student-survey-app\app\public\wp-content\themes\student-survey-child\functions.php on line 91
+[14-Aug-2025 20:21:27 UTC] PHP Parse error:  Unclosed '{' on line 76 in C:\Users\Constant\Local Sites\student-survey-app\app\public\wp-content\themes\student-survey-child\functions.php on line 91
+[14-Aug-2025 20:21:38 UTC] PHP Parse error:  Unclosed '{' on line 76 in C:\Users\Constant\Local Sites\student-survey-app\app\public\wp-content\themes\student-survey-child\functions.php on line 91
+[14-Aug-2025 20:21:49 UTC] PHP Parse error:  Unclosed '{' on line 76 in C:\Users\Constant\Local Sites\student-survey-app\app\public\wp-content\themes\student-survey-child\functions.php on line 96
+[14-Aug-2025 20:23:50 UTC] PHP Parse error:  Unclosed '{' on line 76 in C:\Users\Constant\Local Sites\student-survey-app\app\public\wp-content\themes\student-survey-child\functions.php on line 95
+[14-Aug-2025 20:25:51 UTC] PHP Parse error:  Unclosed '{' on line 76 in C:\Users\Constant\Local Sites\student-survey-app\app\public\wp-content\themes\student-survey-child\functions.php on line 95
+[14-Aug-2025 20:27:52 UTC] PHP Parse error:  Unclosed '{' on line 76 in C:\Users\Constant\Local Sites\student-survey-app\app\public\wp-content\themes\student-survey-child\functions.php on line 95
+[14-Aug-2025 20:29:53 UTC] PHP Parse error:  Unclosed '{' on line 76 in C:\Users\Constant\Local Sites\student-survey-app\app\public\wp-content\themes\student-survey-child\functions.php on line 95
+[14-Aug-2025 20:31:26 UTC] PHP Parse error:  Unclosed '{' on line 76 in C:\Users\Constant\Local Sites\student-survey-app\app\public\wp-content\themes\student-survey-child\functions.php on line 95
+[14-Aug-2025 20:31:37 UTC] PHP Parse error:  Unclosed '{' on line 76 in C:\Users\Constant\Local Sites\student-survey-app\app\public\wp-content\themes\student-survey-child\functions.php on line 95
+[14-Aug-2025 20:31:48 UTC] PHP Parse error:  Unclosed '{' on line 72 in C:\Users\Constant\Local Sites\student-survey-app\app\public\wp-content\themes\student-survey-child\functions.php on line 100
+[14-Aug-2025 20:33:49 UTC] PHP Parse error:  Unclosed '{' on line 72 in C:\Users\Constant\Local Sites\student-survey-app\app\public\wp-content\themes\student-survey-child\functions.php on line 99
+[14-Aug-2025 20:35:50 UTC] PHP Parse error:  Unclosed '{' on line 72 in C:\Users\Constant\Local Sites\student-survey-app\app\public\wp-content\themes\student-survey-child\functions.php on line 99
+[14-Aug-2025 20:37:51 UTC] PHP Parse error:  Unclosed '{' on line 72 in C:\Users\Constant\Local Sites\student-survey-app\app\public\wp-content\themes\student-survey-child\functions.php on line 99
+[14-Aug-2025 20:39:52 UTC] PHP Parse error:  Unclosed '{' on line 72 in C:\Users\Constant\Local Sites\student-survey-app\app\public\wp-content\themes\student-survey-child\functions.php on line 99
+[14-Aug-2025 20:41:53 UTC] PHP Parse error:  Unclosed '{' on line 72 in C:\Users\Constant\Local Sites\student-survey-app\app\public\wp-content\themes\student-survey-child\functions.php on line 99
+[14-Aug-2025 20:45:31 UTC] PHP Parse error:  Unclosed '{' on line 72 in C:\Users\Constant\Local Sites\student-survey-app\app\public\wp-content\themes\student-survey-child\functions.php on line 99
+[14-Aug-2025 20:45:42 UTC] PHP Parse error:  Unclosed '{' on line 72 in C:\Users\Constant\Local Sites\student-survey-app\app\public\wp-content\themes\student-survey-child\functions.php on line 99
+[14-Aug-2025 21:10:35 UTC] PHP Parse error:  Unclosed '{' on line 102 in C:\Users\Constant\Local Sites\student-survey-app\app\public\wp-content\themes\student-survey-child\functions.php on line 103
+[14-Aug-2025 21:12:36 UTC] PHP Parse error:  Unclosed '{' on line 102 in C:\Users\Constant\Local Sites\student-survey-app\app\public\wp-content\themes\student-survey-child\functions.php on line 103
+[14-Aug-2025 21:13:50 UTC] PHP Parse error:  Unclosed '{' on line 102 in C:\Users\Constant\Local Sites\student-survey-app\app\public\wp-content\themes\student-survey-child\functions.php on line 103
+[14-Aug-2025 21:15:50 UTC] PHP Parse error:  Unclosed '{' on line 102 in C:\Users\Constant\Local Sites\student-survey-app\app\public\wp-content\themes\student-survey-child\functions.php on line 103
+[14-Aug-2025 21:17:51 UTC] PHP Parse error:  Unclosed '{' on line 102 in C:\Users\Constant\Local Sites\student-survey-app\app\public\wp-content\themes\student-survey-child\functions.php on line 103
+[14-Aug-2025 21:19:52 UTC] PHP Parse error:  Unclosed '{' on line 102 in C:\Users\Constant\Local Sites\student-survey-app\app\public\wp-content\themes\student-survey-child\functions.php on line 103
+[14-Aug-2025 21:21:53 UTC] PHP Parse error:  Unclosed '{' on line 102 in C:\Users\Constant\Local Sites\student-survey-app\app\public\wp-content\themes\student-survey-child\functions.php on line 103
+[14-Aug-2025 21:23:54 UTC] PHP Parse error:  Unclosed '{' on line 102 in C:\Users\Constant\Local Sites\student-survey-app\app\public\wp-content\themes\student-survey-child\functions.php on line 103
+[14-Aug-2025 21:25:55 UTC] PHP Parse error:  Unclosed '{' on line 102 in C:\Users\Constant\Local Sites\student-survey-app\app\public\wp-content\themes\student-survey-child\functions.php on line 103
+[14-Aug-2025 21:27:56 UTC] PHP Parse error:  Unclosed '{' on line 102 in C:\Users\Constant\Local Sites\student-survey-app\app\public\wp-content\themes\student-survey-child\functions.php on line 103
+[14-Aug-2025 21:29:57 UTC] PHP Parse error:  Unclosed '{' on line 102 in C:\Users\Constant\Local Sites\student-survey-app\app\public\wp-content\themes\student-survey-child\functions.php on line 103
+[14-Aug-2025 21:31:58 UTC] PHP Parse error:  Unclosed '{' on line 102 in C:\Users\Constant\Local Sites\student-survey-app\app\public\wp-content\themes\student-survey-child\functions.php on line 103
+[14-Aug-2025 21:33:59 UTC] PHP Parse error:  Unclosed '{' on line 102 in C:\Users\Constant\Local Sites\student-survey-app\app\public\wp-content\themes\student-survey-child\functions.php on line 103
+[14-Aug-2025 21:36:00 UTC] PHP Parse error:  Unclosed '{' on line 102 in C:\Users\Constant\Local Sites\student-survey-app\app\public\wp-content\themes\student-survey-child\functions.php on line 103
+[14-Aug-2025 21:38:01 UTC] PHP Parse error:  Unclosed '{' on line 102 in C:\Users\Constant\Local Sites\student-survey-app\app\public\wp-content\themes\student-survey-child\functions.php on line 103
+[14-Aug-2025 21:40:02 UTC] PHP Parse error:  Unclosed '{' on line 102 in C:\Users\Constant\Local Sites\student-survey-app\app\public\wp-content\themes\student-survey-child\functions.php on line 103
+[14-Aug-2025 21:42:03 UTC] PHP Parse error:  Unclosed '{' on line 102 in C:\Users\Constant\Local Sites\student-survey-app\app\public\wp-content\themes\student-survey-child\functions.php on line 103
+[14-Aug-2025 21:44:04 UTC] PHP Parse error:  Unclosed '{' on line 102 in C:\Users\Constant\Local Sites\student-survey-app\app\public\wp-content\themes\student-survey-child\functions.php on line 103
+[14-Aug-2025 21:46:05 UTC] PHP Parse error:  Unclosed '{' on line 102 in C:\Users\Constant\Local Sites\student-survey-app\app\public\wp-content\themes\student-survey-child\functions.php on line 103
+[14-Aug-2025 21:48:06 UTC] PHP Parse error:  Unclosed '{' on line 102 in C:\Users\Constant\Local Sites\student-survey-app\app\public\wp-content\themes\student-survey-child\functions.php on line 103
+[14-Aug-2025 21:50:07 UTC] PHP Parse error:  Unclosed '{' on line 102 in C:\Users\Constant\Local Sites\student-survey-app\app\public\wp-content\themes\student-survey-child\functions.php on line 103
+[14-Aug-2025 21:52:08 UTC] PHP Parse error:  Unclosed '{' on line 102 in C:\Users\Constant\Local Sites\student-survey-app\app\public\wp-content\themes\student-survey-child\functions.php on line 103
+[14-Aug-2025 21:54:09 UTC] PHP Parse error:  Unclosed '{' on line 102 in C:\Users\Constant\Local Sites\student-survey-app\app\public\wp-content\themes\student-survey-child\functions.php on line 103
+[14-Aug-2025 21:56:10 UTC] PHP Parse error:  Unclosed '{' on line 102 in C:\Users\Constant\Local Sites\student-survey-app\app\public\wp-content\themes\student-survey-child\functions.php on line 103
+[14-Aug-2025 21:58:11 UTC] PHP Parse error:  Unclosed '{' on line 102 in C:\Users\Constant\Local Sites\student-survey-app\app\public\wp-content\themes\student-survey-child\functions.php on line 103
+[14-Aug-2025 22:00:12 UTC] PHP Parse error:  Unclosed '{' on line 102 in C:\Users\Constant\Local Sites\student-survey-app\app\public\wp-content\themes\student-survey-child\functions.php on line 103
+[14-Aug-2025 22:02:13 UTC] PHP Parse error:  Unclosed '{' on line 102 in C:\Users\Constant\Local Sites\student-survey-app\app\public\wp-content\themes\student-survey-child\functions.php on line 103
+[14-Aug-2025 22:04:14 UTC] PHP Parse error:  Unclosed '{' on line 102 in C:\Users\Constant\Local Sites\student-survey-app\app\public\wp-content\themes\student-survey-child\functions.php on line 103
+[14-Aug-2025 22:28:08 UTC] PHP Parse error:  Unclosed '(' on line 102 in C:\Users\Constant\Local Sites\student-survey-app\app\public\wp-content\themes\student-survey-child\functions.php on line 105
+[14-Aug-2025 22:30:09 UTC] PHP Parse error:  Unclosed '(' on line 102 in C:\Users\Constant\Local Sites\student-survey-app\app\public\wp-content\themes\student-survey-child\functions.php on line 105
+[14-Aug-2025 22:32:10 UTC] PHP Parse error:  Unclosed '(' on line 102 in C:\Users\Constant\Local Sites\student-survey-app\app\public\wp-content\themes\student-survey-child\functions.php on line 105
+[14-Aug-2025 22:34:11 UTC] PHP Parse error:  Unclosed '(' on line 102 in C:\Users\Constant\Local Sites\student-survey-app\app\public\wp-content\themes\student-survey-child\functions.php on line 105
+[14-Aug-2025 22:36:12 UTC] PHP Parse error:  Unclosed '(' on line 102 in C:\Users\Constant\Local Sites\student-survey-app\app\public\wp-content\themes\student-survey-child\functions.php on line 105
+[14-Aug-2025 22:38:13 UTC] PHP Parse error:  Unclosed '(' on line 102 in C:\Users\Constant\Local Sites\student-survey-app\app\public\wp-content\themes\student-survey-child\functions.php on line 105
+[14-Aug-2025 22:40:14 UTC] PHP Parse error:  Unclosed '(' on line 102 in C:\Users\Constant\Local Sites\student-survey-app\app\public\wp-content\themes\student-survey-child\functions.php on line 105
+[14-Aug-2025 22:42:15 UTC] PHP Parse error:  Unclosed '(' on line 102 in C:\Users\Constant\Local Sites\student-survey-app\app\public\wp-content\themes\student-survey-child\functions.php on line 105
+[14-Aug-2025 22:44:16 UTC] PHP Parse error:  Unclosed '(' on line 102 in C:\Users\Constant\Local Sites\student-survey-app\app\public\wp-content\themes\student-survey-child\functions.php on line 105
+[14-Aug-2025 22:46:17 UTC] PHP Parse error:  Unclosed '(' on line 102 in C:\Users\Constant\Local Sites\student-survey-app\app\public\wp-content\themes\student-survey-child\functions.php on line 105
+[14-Aug-2025 22:47:10 UTC] PHP Parse error:  Unclosed '(' on line 102 in C:\Users\Constant\Local Sites\student-survey-app\app\public\wp-content\themes\student-survey-child\functions.php on line 105
+[15-Aug-2025 11:34:30 UTC] PHP Fatal error:  Uncaught TypeError: call_user_func(): Argument #1 ($callback) must be a valid callback, function "survey_details_meta_box_callback" not found or invalid function name in C:\Users\Constant\Local Sites\student-survey-app\app\public\wp-admin\includes\template.php:1456
+Stack trace:
+#0 C:\Users\Constant\Local Sites\student-survey-app\app\public\wp-admin\edit-form-advanced.php(721): do_meta_boxes(Object(WP_Screen), 'normal', Object(WP_Post))
+#1 C:\Users\Constant\Local Sites\student-survey-app\app\public\wp-admin\post-new.php(75): require('C:\\Users\\Consta...')
+#2 {main}
+  thrown in C:\Users\Constant\Local Sites\student-survey-app\app\public\wp-admin\includes\template.php on line 1456
+[15-Aug-2025 12:40:21 UTC] PHP Fatal error:  Uncaught TypeError: call_user_func(): Argument #1 ($callback) must be a valid callback, function "survey_details_meta_box_callback" not found or invalid function name in C:\Users\Constant\Local Sites\student-survey-app\app\public\wp-admin\includes\template.php:1456
+Stack trace:
+#0 C:\Users\Constant\Local Sites\student-survey-app\app\public\wp-admin\edit-form-advanced.php(721): do_meta_boxes(Object(WP_Screen), 'normal', Object(WP_Post))
+#1 C:\Users\Constant\Local Sites\student-survey-app\app\public\wp-admin\post-new.php(75): require('C:\\Users\\Consta...')
+#2 {main}
+  thrown in C:\Users\Constant\Local Sites\student-survey-app\app\public\wp-admin\includes\template.php on line 1456
+[15-Aug-2025 20:50:54 UTC] PHP Parse error:  Unclosed '{' on line 114 in C:\Users\Constant\Local Sites\student-survey-app\app\public\wp-content\themes\student-survey-child\functions.php on line 120
+[15-Aug-2025 20:50:54 UTC] PHP Warning:  Trying to access array offset on value of type bool in C:\Users\Constant\Local Sites\student-survey-app\app\public\wp-includes\class-wp-recovery-mode-email-service.php on line 367
+[15-Aug-2025 20:50:54 UTC] PHP Warning:  Trying to access array offset on value of type bool in C:\Users\Constant\Local Sites\student-survey-app\app\public\wp-includes\class-wp-recovery-mode-email-service.php on line 368
