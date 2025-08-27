@@ -79,4 +79,11 @@ function question_details_meta_box_callback( $post ) {
     $question_type    = get_post_meta( $post->ID, '_question_type', true );
     $answer_options   = get_post_meta( $post->ID, '_question_answer_options', true );
 
-   
+    // Retrieve all surveys for dropdown list
+    $surveys = get_posts( array(
+        'post_type'      => 'survey',
+        'posts_per_page' => -1,
+        'orderby'        => 'title',
+        'order'          => 'ASC'
+    ) );
+    ?>
