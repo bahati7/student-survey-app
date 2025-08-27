@@ -71,4 +71,12 @@ function question_add_meta_box() {
 }
 add_action( 'add_meta_boxes', 'question_add_meta_box' );
 
+// Callback to display the meta box html
+function question_details_meta_box_callback( $post ) {
+    wp_nonce_field( 'question_details_save_meta_box_data', 'question_details_meta_box_nonce' );
 
+    $parent_survey_id = get_post_meta( $post->ID, '_question_parent_survey', true );
+    $question_type    = get_post_meta( $post->ID, '_question_type', true );
+    $answer_options   = get_post_meta( $post->ID, '_question_answer_options', true );
+
+   
