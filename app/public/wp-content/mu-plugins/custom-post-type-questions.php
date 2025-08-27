@@ -57,3 +57,18 @@ function add_question_caps() {
     }
 }
 add_action( 'admin_init', 'add_question_caps' );
+
+// Add meta boxes for the CPT 'Question'
+function question_add_meta_box() {
+    add_meta_box(
+        'question_details',
+        'Question Details',
+        'question_details_meta_box_callback',
+        'question',
+        'normal',
+        'high'
+    );
+}
+add_action( 'add_meta_boxes', 'question_add_meta_box' );
+
+
