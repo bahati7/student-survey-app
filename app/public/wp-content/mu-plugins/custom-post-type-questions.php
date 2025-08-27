@@ -32,3 +32,28 @@ function register_question_cpt() {
 }
 add_action( 'init', 'register_question_cpt' );
 
+// manage capacities for the CPT question
+function add_question_caps() {
+    $roles = array( 'administrator', 'instructor' );
+    foreach ( $roles as $the_role ) {
+        $role = get_role( $the_role );
+        if ( empty( $role ) ) {
+            continue;
+        }
+
+        $role->add_cap( 'edit_question' );
+        $role->add_cap( 'read_question' );
+        $role->add_cap( 'delete_question' );
+        $role->add_cap( 'edit_questions' );
+        $role->add_cap( 'edit_others_questions' );
+        $role->add_cap( 'publish_questions' );
+        $role->add_cap( 'read_private_questions' );
+        $role->add_cap( 'delete_questions' );
+        $role->add_cap( 'delete_private_questions' );
+        $role->add_cap( 'delete_published_questions' );
+        $role->add_cap( 'delete_others_questions' );
+        $role->add_cap( 'edit_private_questions' );
+        $role->add_cap( 'edit_published_questions' );
+    }
+}
+add_action( 'admin_init', 'add_question_caps' );
