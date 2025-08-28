@@ -87,3 +87,36 @@ function question_details_meta_box_callback( $post ) {
         'order'          => 'ASC'
     ) );
     ?>
+    
+    <p>
+        <label for="question_parent_survey">Associated Survey</label>
+        <br>
+        <select name="question_parent_survey" id="question_parent_survey" style="width:100%;">
+            <option value=""> Select a Survey </option>
+            <?php foreach ( $surveys as $survey ) : ?>
+                <option value="<?php echo esc_attr( $survey->ID ); ?>" <?php selected( $parent_survey_id, $survey->ID ); ?>>
+                    <?php echo esc_html( $survey->post_title ); ?>
+                </option>
+            <?php endforeach; ?>
+        </select>
+    </p>
+
+    <p>
+        <label for="question_type">Question Type</label>
+        <br>
+        <select name="question_type" id="question_type" style="width:100%;">
+            <option value="text" <?php selected( $question_type, 'text' ); ?>>Text</option>
+            <option value="multiple_choice" <?php selected( $question_type, 'multiple_choice' ); ?>>Multiple Choice</option>
+            <option value="true_false" <?php selected( $question_type, 'true_false' ); ?>>True/False</option>
+        </select>
+    </p>
+
+    <p>
+        <label for="answer_options">Answer Options</label>
+        <br>
+        <textarea id="answer_options" name="answer_options" style="width:100%;" placeholder="Enter one option per line for multiple choice questions."><?php echo esc_textarea( $answer_options ); ?></textarea>
+        
+    </p>
+    <?php
+}
+
