@@ -120,3 +120,34 @@ function question_details_meta_box_callback( $post ) {
     <?php
 }
 
+// Saving meta box data 'Question'
+function question_save_meta_box_data( $post_id ) {
+    if ( ! isset( $_POST['question_details_meta_box_nonce'] ) ) {
+        return;
+    }
+
+    if ( ! wp_verify_nonce( $_POST['question_details_meta_box_nonce'], 'question_details_save_meta_box_data' ) ) {
+        return;
+    }
+
+    if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) {
+        return;
+    }
+
+    if ( ! current_user_can( 'edit_question', $post_id ) ) {
+        return;
+    }
+
+    if ( isset( $_POST['question_parent_survey'] ) ) {
+        update_post_meta( $post_id, '_question_parent_survey', sanitize_text_field( $_POST['question_parent_survey'] ) );
+    }
+
+    if ( isset( $_POST['question_type'] ) ) {
+        update_post_meta( $post_id, '_question_type', sanitize_text_field( $_POST['question_type'] ) );
+    }
+
+    if ( isset( $_POST['answer_options'] ) ) {
+        update_post_meta( $post_id, '_question_answer_options', sanitize_textarea_field( $_POST['answer_options'] ) );
+    }
+}
+add_action( 'save_post', 'question_save_meta_box_data' );
