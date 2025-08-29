@@ -26,7 +26,7 @@ Below is an example screenshot of the dynamic menu as seen by a logged-in Instru
 ### Recommended Method (Full Site Editing)
 1. **Open the WordPress Site Editor (Appearance > Editor)**
 
-![WordPress Site Editor](scren1.png)
+![WordPress Site Editor](assets/screens/scren1.png)
 
 2. **Add a Shortcode block** in the header area or wherever you want the menu.
 
@@ -57,5 +57,6 @@ The dynamic menu will automatically display and adapt to the user's role.
 - For questions, contact me (#AshDest) or consult the WordPress documentation on shortcodes and user roles.
 
 ---
+
 
 
