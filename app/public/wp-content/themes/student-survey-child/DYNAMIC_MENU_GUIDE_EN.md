@@ -26,13 +26,13 @@ Below is an example screenshot of the dynamic menu as seen by a logged-in Instru
 ### Recommended Method (Full Site Editing)
 1. **Open the WordPress Site Editor (Appearance > Editor)**
 
-![WordPress Site Editor](assets/screenshots/scren1.png)
+![WordPress Site Editor](assets/screens/scren1.png)
 
 2. **Add a Shortcode block** in the header area or wherever you want the menu.
 
-![Adding Shortcode Block](assets/screenshots/scren2.png)
-![Shortcode Block Settings](assets/screenshots/scren3.png)
-![Shortcode Block Preview](assets/screenshots/scren4.png)
+![Adding Shortcode Block](assets/screens/scren2.png)
+![Shortcode Block Settings](assets/screens/scren3.png)
+![Shortcode Block Preview](assets/screens/scren4.png)
 
 3. **Enter the following shortcode:**
    ```
