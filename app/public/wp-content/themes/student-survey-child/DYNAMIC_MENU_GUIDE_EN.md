@@ -11,7 +11,7 @@ This guide explains how to activate and display the dynamic menu based on user r
 
 Below is an example screenshot of the dynamic menu as seen by a logged-in Instructor:
 
-![Dynamic Menu Example](assets/screenshots/screen1.png)
+![Dynamic Menu Example](assets/screens/screen1.png)
 
 ## 2. How the Dynamic Menu Works
 - The menu automatically adapts to the logged-in user's role:
@@ -57,3 +57,4 @@ The dynamic menu will automatically display and adapt to the user's role.
 - For questions, contact me (#AshDest) or consult the WordPress documentation on shortcodes and user roles.
 
 ---
+
