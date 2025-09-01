@@ -112,3 +112,5 @@ Stack trace:
 [15-Aug-2025 20:50:54 UTC] PHP Parse error:  Unclosed '{' on line 114 in C:\Users\Constant\Local Sites\student-survey-app\app\public\wp-content\themes\student-survey-child\functions.php on line 120
 [15-Aug-2025 20:50:54 UTC] PHP Warning:  Trying to access array offset on value of type bool in C:\Users\Constant\Local Sites\student-survey-app\app\public\wp-includes\class-wp-recovery-mode-email-service.php on line 367
 [15-Aug-2025 20:50:54 UTC] PHP Warning:  Trying to access array offset on value of type bool in C:\Users\Constant\Local Sites\student-survey-app\app\public\wp-includes\class-wp-recovery-mode-email-service.php on line 368
+[26-Aug-2025 10:10:29 UTC] PHP Parse error:  syntax error, unexpected end of file in C:\Users\Constant\Local Sites\student-survey-app\app\public\wp-content\mu-plugins\custom-post-type-questions.php on line 156
+[26-Aug-2025 10:10:31 UTC] PHP Parse error:  syntax error, unexpected end of file in C:\Users\Constant\Local Sites\student-survey-app\app\public\wp-content\mu-plugins\custom-post-type-questions.php on line 156
