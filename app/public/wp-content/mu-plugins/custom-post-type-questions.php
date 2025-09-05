@@ -67,8 +67,28 @@ function set_question_columns( $columns ) {
 }
 add_filter( 'manage_question_posts_columns', 'set_question_columns' );
 
-
-
+// Populate custom columns with data
+function populate_question_columns( $column, $post_id ) {
+    switch ( $column ) {
+        case 'question_parent_survey':
+            $parent_survey_id = get_post_meta( $post_id, '_question_parent_survey', true );
+            if ( $parent_survey_id ) {
+                echo esc_html( get_the_title( $parent_survey_id ) );
+            } else {
+                echo '—';
+            }
+            break;
+        case 'question_type':
+            $question_type = get_post_meta( $post_id, '_question_type', true );
+            if ( $question_type ) {
+                echo ucfirst( str_replace( '_', ' ', $question_type ) );
+            } else {
+                echo '—';
+            }
+            break;
+    }
+}
+add_action( 'manage_question_posts_custom_column', 'populate_question_columns', 10, 2 );
 
 
 // Add meta boxes for the CPT 'Question'
