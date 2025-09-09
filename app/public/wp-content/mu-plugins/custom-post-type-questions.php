@@ -58,6 +58,41 @@ function add_question_caps() {
 }
 add_action( 'admin_init', 'add_question_caps' );
 
+
+
+// Add custom columns to the 'Question' list table
+function set_question_columns( $columns ) {
+    $columns['question_parent_survey'] = 'Associated Survey';
+    $columns['question_type'] = 'Question Type';
+    return $columns;
+}
+add_filter( 'manage_question_posts_columns', 'set_question_columns' );
+
+// Populate custom columns with data
+function populate_question_columns( $column, $post_id ) {
+    switch ( $column ) {
+        case 'question_parent_survey':
+            $parent_survey_id = get_post_meta( $post_id, '_question_parent_survey', true );
+            if ( $parent_survey_id ) {
+                echo esc_html( get_the_title( $parent_survey_id ) );
+            } else {
+                echo '—';
+            }
+            break;
+        case 'question_type':
+            $question_type = get_post_meta( $post_id, '_question_type', true );
+            if ( $question_type ) {
+                echo ucfirst( str_replace( '_', ' ', $question_type ) );
+            } else {
+                echo '—';
+            }
+            break;
+    }
+}
+add_action( 'manage_question_posts_custom_column', 'populate_question_columns', 10, 2 );
+
+
+
 // Add meta boxes for the CPT 'Question'
 function question_add_meta_box() {
     add_meta_box(
@@ -117,6 +152,7 @@ function question_details_meta_box_callback( $post ) {
         <textarea id="answer_options" name="answer_options" style="width:100%;" placeholder="Enter one option per line for multiple choice questions."><?php echo esc_textarea( $answer_options ); ?></textarea>
         
     </p>
+
     <?php
 }
 
