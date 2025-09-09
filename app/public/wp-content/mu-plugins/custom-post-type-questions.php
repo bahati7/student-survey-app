@@ -59,6 +59,7 @@ function add_question_caps() {
 add_action( 'admin_init', 'add_question_caps' );
 
 
+
 // Add custom columns to the 'Question' list table
 function set_question_columns( $columns ) {
     $columns['question_parent_survey'] = 'Associated Survey';
@@ -89,6 +90,7 @@ function populate_question_columns( $column, $post_id ) {
     }
 }
 add_action( 'manage_question_posts_custom_column', 'populate_question_columns', 10, 2 );
+
 
 
 // Add meta boxes for the CPT 'Question'
