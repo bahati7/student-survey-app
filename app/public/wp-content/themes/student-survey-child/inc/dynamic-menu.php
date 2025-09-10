@@ -3,7 +3,10 @@
 add_shortcode('dynamic_main_menu', function() {
     $menu = array();
     $menu[] = '<a href="' . esc_url(home_url('/')) . '">Home</a>';
-    $menu[] = '<a href="' . esc_url(home_url('/about/')) . '">About</a>';
+    $menu[] = '<a href="' . esc_url(home_url('/about/')) . '">Abouts</a>';
+    if(is_user_logged_in() && current_user_can('student')) {
+        $menu[] = '<a href="' . esc_url(home_url('/survey/')) . '">All Surveys</a>';
+    }
     if (!is_user_logged_in()) {
         $menu[] = '<div class="dynamic-menu-dropdown"><a href="#">User</a><div class="dynamic-menu-dropdown-content">'
             .'<a href="' . esc_url(wp_login_url()) . '">Login</a>'

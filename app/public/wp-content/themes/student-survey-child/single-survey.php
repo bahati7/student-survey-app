@@ -1,0 +1,138 @@
+<?php
+get_header();
+
+// Check if the user is a student
+if(!current_user_can('student')) {
+    echo "<p class='alert'>You do not have permission to view this survey !</p>";
+    get_footer();
+    exit;
+}
+
+// Fetch current survey information
+$survey_id   = get_the_ID();
+$title       = get_the_title();
+$description = get_post_meta( $survey_id, '_survey_description', true );
+$start_date  = get_post_meta( $survey_id, '_survey_start_date', true );
+$end_date    = get_post_meta( $survey_id, '_survey_end_date', true );
+
+// Retrieve survey questions
+// Gestion de la soumission du formulaire
+$success_message = '';
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['answer']) && is_user_logged_in()) {
+    $answers = $_POST['answer'];
+    $user_id = get_current_user_id();
+    foreach ($answers as $question_id => $response) {
+        // Pour les cases à cocher (tableau)
+        if (is_array($response)) {
+            $response = array_map('sanitize_text_field', $response);
+            $value = implode(', ', $response);
+        } else {
+            $value = sanitize_text_field($response);
+        }
+        // Enregistre la réponse en tant que meta utilisateur (ou post meta, selon besoin)
+        update_user_meta($user_id, 'survey_answer_' . $survey_id . '_' . $question_id, $value);
+    }
+    $success_message = "<div class='survey-success' style='background:#d4edda;color:#155724;padding:12px 18px;border-radius:6px;margin-bottom:18px;border:1px solid #c3e6cb;'>Merci, vos réponses ont bien été enregistrées !</div>";
+}
+
+$questions = get_posts(array(
+    'post_type' => 'question',
+    'meta_key' => '_question_parent_survey',
+    'meta_value' => $survey_id,
+    'orderby' => 'menu_order',
+    'order' => 'ASC',
+    'posts_per_page' => -1,
+));
+?>
+
+<div id="survey-wrapper" class="container" style="max-width:600px;margin:auto;">
+    <h1><?= esc_html($title); ?></h1>
+
+    <?php if ($description) { ?>
+        <p class="survey-description"><?= esc_html($description); ?></p>
+    <?php } ?>
+
+    <?php if ($start_date && $end_date) { ?>
+        <p class="survey-dates">
+            <strong>Available from:</strong>
+            <?= esc_html($start_date); ?> to <?= esc_html($end_date); ?>
+        </p>
+    <?php } ?>
+
+    <?php if ($success_message) echo $success_message; ?>
+    <?php if ($questions) { ?>
+        <form id="survey-form" method="post" autocomplete="off">
+            <?php
+            $total = count($questions);
+            foreach ($questions as $i => $question) {
+                $question_id = $question->ID;
+                $question_text = $question->post_title;
+                $question_type = get_post_meta($question_id, '_question_type', true);
+                $options = get_post_meta($question_id, '_question_answer_options', true);
+                $options_array = $options ? array_filter(array_map('trim', explode("\n", $options))) : [];
+            ?>
+                <fieldset class="survey-question" style="border:1px solid #eee;padding:24px 18px 18px 18px;border-radius:8px;margin-bottom:24px;background:#fafbfc;">
+                    <legend style="font-weight:bold;font-size:1.1em;margin-bottom:12px;">
+                        Question <?= ($i+1) ?> / <?= $total ?> :
+                    </legend>
+                    <p style="margin-bottom:18px;"><?= esc_html($question_text); ?></p>
+
+                    <?php if ($question_type === 'text') { ?>
+                        <input type="text" name="answer[<?= $question_id; ?>]" required class="form-control" style="width:100%;padding:8px;" placeholder="Votre réponse...">
+                    <?php } elseif ($question_type === 'multiple_choice' && !empty($options_array)) { ?>
+                        <?php foreach ($options_array as $opt) { ?>
+                            <label style="display:block;margin-bottom:8px;">
+                                <input type="checkbox" name="answer[<?= $question_id; ?>][]" value="<?= esc_attr($opt); ?>" required>
+                                <?= esc_html($opt); ?>
+                            </label>
+                        <?php } ?>
+                    <?php } elseif ($question_type === 'true_false') { ?>
+                        <label style="margin-right:16px;">
+                            <input type="radio" name="answer[<?= $question_id; ?>]" value="true" required> True
+                        </label>
+                        <label>
+                            <input type="radio" name="answer[<?= $question_id; ?>]" value="false" required> False
+                        </label>
+                    <?php } ?>
+                </fieldset>
+            <?php } ?>
+
+            <div class="survey-navigation" style="text-align:center;margin-bottom:16px;">
+                <button type="submit" id="submit-btn">Submit</button>
+            </div>
+            <p id="progress" style="text-align:center;font-size:1em;">Total questions: <?= $total; ?></p>
+        </form>
+    <?php } else { ?>
+        <p>No questions found for this survey.</p>
+    <?php } ?>
+</div>
+
+<style>
+/* Responsive and accessible improvements */
+@media (max-width: 600px) {
+    #survey-wrapper { padding: 0 8px; }
+    fieldset.survey-question { padding: 16px 6px 12px 6px; }
+}
+input[type="text"], .form-control {
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1em;
+}
+button#prev-btn, button#next-btn, button#submit-btn {
+    padding: 8px 18px;
+    border-radius: 4px;
+    border: none;
+    background: #0073aa;
+    color: #fff;
+    font-weight: bold;
+    cursor: pointer;
+}
+button[disabled] {
+    background: #ccc;
+    cursor: not-allowed;
+}
+</style>
+
+<?php
+get_footer();
+?>
