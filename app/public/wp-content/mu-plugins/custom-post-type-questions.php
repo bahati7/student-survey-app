@@ -135,7 +135,7 @@ function question_details_meta_box_callback( $post ) {
             <?php endforeach; ?>
         </select>
     </p>
-
+    
     <p>
         <label for="question_type">Question Type</label>
         <br>
@@ -143,6 +143,16 @@ function question_details_meta_box_callback( $post ) {
             <option value="text" <?php selected( $question_type, 'text' ); ?>>Text</option>
             <option value="multiple_choice" <?php selected( $question_type, 'multiple_choice' ); ?>>Multiple Choice</option>
             <option value="true_false" <?php selected( $question_type, 'true_false' ); ?>>True/False</option>
+            <option value="email" <?php selected( $question_type, 'email' ); ?>>Email</option>
+            <option value="phone" <?php selected( $question_type, 'phone' ); ?>>Phone Number</option>
+            <option value="text_array" <?php selected( $question_type, 'text_array' ); ?>>Text Array</option>
+            <option value="radio_button" <?php selected( $question_type, 'radio_button' ); ?>>Radio Button</option>
+            <option value="date" <?php selected( $question_type, 'date' ); ?>>Date</option>
+            <option value="number" <?php selected( $question_type, 'number' ); ?>>Number</option>
+            <option value="file_upload" <?php selected( $question_type, 'file_upload' ); ?>>File Upload</option>
+            <option value="checkbox" <?php selected( $question_type, 'checkbox' ); ?>>Checkbox</option>
+            <option value="time" <?php selected( $question_type, 'time' ); ?>>Time</option>
+            <option value="range" <?php selected( $question_type, 'range' ); ?>>Range</option>
         </select>
     </p>
 
