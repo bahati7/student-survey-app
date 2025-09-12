@@ -114,6 +114,15 @@ function filter_questions_by_survey( $post_type ) {
 }
 add_action( 'restrict_manage_posts', 'filter_questions_by_survey' );
 
+// Apply filter to query
+function filter_questions_query( $query ) {
+    global $pagenow;
+    if ( $pagenow === 'edit.php' && isset( $_GET['question_parent_survey'] ) && $_GET['question_parent_survey'] != '' && $query->get( 'post_type' ) === 'question' ) {
+        $query->set( 'meta_key', '_question_parent_survey' );
+        $query->set( 'meta_value', intval( $_GET['question_parent_survey'] ) );
+    }
+}
+add_filter( 'pre_get_posts', 'filter_questions_query');
 
 
 // Add meta boxes for the CPT 'Question'
