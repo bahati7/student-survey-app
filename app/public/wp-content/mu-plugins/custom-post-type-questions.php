@@ -91,6 +91,29 @@ function populate_question_columns( $column, $post_id ) {
 }
 add_action( 'manage_question_posts_custom_column', 'populate_question_columns', 10, 2 );
 
+// Add Survey filter in Questions admin list
+function filter_questions_by_survey( $post_type ) {
+    if ( $post_type !== 'question' ) {
+        return;
+    }
+
+    $surveys = get_posts( array(
+        'post_type'      => 'survey',
+        'posts_per_page' => -1,
+        'orderby'        => 'title',
+        'order'          => 'ASC'
+    ) );
+
+    echo '<select name="question_parent_survey">';
+    echo '<option value="">All Surveys</option>';
+    foreach ( $surveys as $survey ) {
+        $selected = ( isset( $_GET['question_parent_survey'] ) && $_GET['question_parent_survey'] == $survey->ID ) ? ' selected="selected"' : '';
+        echo '<option value="' . esc_attr( $survey->ID ) . '"' . $selected . '>' . esc_html( $survey->post_title ) . '</option>';
+    }
+    echo '</select>';
+}
+add_action( 'restrict_manage_posts', 'filter_questions_by_survey' );
+
 
 
 // Add meta boxes for the CPT 'Question'
