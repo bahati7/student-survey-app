@@ -17,22 +17,51 @@ $end_date    = get_post_meta( $survey_id, '_survey_end_date', true );
 
 // Retrieve survey questions
 // Gestion de la soumission du formulaire
+// Vérifie si l'étudiant a déjà répondu à ce survey
+$user_id = get_current_user_id();
+$already_responded = false;
+if (is_user_logged_in()) {
+    $existing_response = get_posts([
+        'post_type' => 'response',
+        'meta_key' => '_response_survey_id',
+        'meta_value' => $survey_id,
+        'author' => $user_id,
+        'posts_per_page' => 1
+    ]);
+    if ($existing_response) {
+        $already_responded = true;
+    }
+}
+
 $success_message = '';
-if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['answer']) && is_user_logged_in()) {
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['answer']) && is_user_logged_in() && !$already_responded) {
     $answers = $_POST['answer'];
     $user_id = get_current_user_id();
+    $clean_answers = array();
     foreach ($answers as $question_id => $response) {
-        // Pour les cases à cocher (tableau)
         if (is_array($response)) {
             $response = array_map('sanitize_text_field', $response);
-            $value = implode(', ', $response);
+            $clean_answers[$question_id] = $response;
         } else {
-            $value = sanitize_text_field($response);
+            $clean_answers[$question_id] = sanitize_text_field($response);
         }
-        // Enregistre la réponse en tant que meta utilisateur (ou post meta, selon besoin)
-        update_user_meta($user_id, 'survey_answer_' . $survey_id . '_' . $question_id, $value);
     }
-    $success_message = "<div class='survey-success' style='background:#d4edda;color:#155724;padding:12px 18px;border-radius:6px;margin-bottom:18px;border:1px solid #c3e6cb;'>Merci, vos réponses ont bien été enregistrées !</div>";
+    // Crée un post de type 'response'
+    $response_post = array(
+        'post_type'    => 'response',
+        'post_title'   => 'Response for Survey #' . $survey_id . ' by User #' . $user_id,
+        'post_status'  => 'publish',
+        'post_author'  => $user_id,
+    );
+    $response_id = wp_insert_post($response_post);
+    if ($response_id && !is_wp_error($response_id)) {
+        update_post_meta($response_id, '_response_survey_id', $survey_id);
+        update_post_meta($response_id, '_response_student_id', $user_id);
+        update_post_meta($response_id, '_response_answers', $clean_answers);
+        $success_message = "<div class='survey-success' style='background:#d4edda;color:#155724;padding:12px 18px;border-radius:6px;margin-bottom:18px;border:1px solid #c3e6cb;'>Merci, vos réponses ont bien été enregistrées !</div>";
+    } else {
+        $success_message = "<div class='survey-error' style='background:#f8d7da;color:#721c24;padding:12px 18px;border-radius:6px;margin-bottom:18px;border:1px solid #f5c6cb;'>Erreur lors de l'enregistrement des réponses.</div>";
+    }
 }
 
 $questions = get_posts(array(
@@ -60,7 +89,11 @@ $questions = get_posts(array(
     <?php } ?>
 
     <?php if ($success_message) echo $success_message; ?>
-    <?php if ($questions) { ?>
+    <?php if ($already_responded) { ?>
+        <div class="survey-info" style="background:#fff3cd;color:#856404;padding:12px 18px;border-radius:6px;margin-bottom:18px;border:1px solid #ffeeba;">
+            You have already responded to this survey. Thank you!
+        </div>
+    <?php } elseif ($questions) { ?>
         <form id="survey-form" method="post" autocomplete="off">
             <?php
             $total = count($questions);
