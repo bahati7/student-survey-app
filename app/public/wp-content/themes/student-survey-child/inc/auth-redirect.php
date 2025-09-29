@@ -8,10 +8,10 @@ add_filter('login_redirect', function($redirect_to, $request, $user) {
             return admin_url();
         }
         if (in_array('teacher', $user->roles, true) || in_array('instructor', $user->roles, true)) {
-            return home_url('/dashboard/teacher/');
+            return home_url('/dashboard/');
         }
         if (in_array('student', $user->roles, true)) {
-            return home_url('/student-dashboard');
+            return home_url('/');
         }
     }
     return $redirect_to;
@@ -28,11 +28,11 @@ add_action('admin_init', function() {
     if ( is_admin() && !defined('DOING_AJAX') ) {
         $user = wp_get_current_user();
         if ( in_array('student', (array) $user->roles) ) {
-            wp_redirect(home_url('/student-dashboard'));
+            wp_redirect(home_url('/'));
             exit;
         }
         if ( in_array('teacher', (array) $user->roles) || in_array('instructor', (array) $user->roles) ) {
-            wp_redirect(home_url('/dashboard/teacher/'));
+            wp_redirect(home_url('/dashboard/'));
             exit;
         }
     }
