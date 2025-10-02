@@ -2,7 +2,18 @@
 // Dynamic main menu shortcode
 add_shortcode('dynamic_main_menu', function() {
     $menu = array();
-    $menu[] = '<a href="' . esc_url(home_url('/')) . '">Home</a>';
+    // Lien dynamique pour la page d'accueil contextuelle
+    $home_context_page = get_pages(array(
+        'meta_key' => '_wp_page_template',
+        'meta_value' => 'page-home-context.php',
+        'post_status' => 'publish',
+        'number' => 1
+    ));
+    if (!empty($home_context_page)) {
+        $menu[] = '<a href="' . esc_url(get_permalink($home_context_page[0]->ID)) . '">' . esc_html(get_the_title($home_context_page[0]->ID)) . '</a>';
+    } else {
+        $menu[] = '<a href="' . esc_url(home_url('/')) . '">Home</a>';
+    }
     $menu[] = '<a href="' . esc_url(home_url('/about/')) . '">Abouts</a>';
     if(is_user_logged_in() && current_user_can('student')) {
         $menu[] = '<a href="' . esc_url(home_url('/survey/')) . '">All Surveys</a>';
