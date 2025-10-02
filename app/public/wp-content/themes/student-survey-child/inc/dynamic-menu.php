@@ -7,7 +7,7 @@ add_shortcode('dynamic_main_menu', function() {
     if(is_user_logged_in() && current_user_can('student')) {
         $menu[] = '<a href="' . esc_url(home_url('/survey/')) . '">All Surveys</a>';
 
-        $menu[] = '<a href="' . esc_url(home_url('/my-completed-surveys/')) . '">My Completed Surveys</a>';
+        // $menu[] = '<a href="' . esc_url(home_url('/my-completed-surveys/')) . '">My Completed Surveys</a>';
 
         // Lien dynamique pour la page "My Completed Surveys"
         $my_surveys_page = get_pages(array(
