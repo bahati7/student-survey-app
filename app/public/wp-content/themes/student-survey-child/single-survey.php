@@ -110,23 +110,74 @@ $questions = get_posts(array(
                     </legend>
                     <p style="margin-bottom:18px;"><?= esc_html($question_text); ?></p>
 
-                    <?php if ($question_type === 'text') { ?>
-                        <input type="text" name="answer[<?= $question_id; ?>]" required class="form-control" style="width:100%;padding:8px;" placeholder="Votre réponse...">
-                    <?php } elseif ($question_type === 'multiple_choice' && !empty($options_array)) { ?>
-                        <?php foreach ($options_array as $opt) { ?>
-                            <label style="display:block;margin-bottom:8px;">
-                                <input type="checkbox" name="answer[<?= $question_id; ?>][]" value="<?= esc_attr($opt); ?>" required>
-                                <?= esc_html($opt); ?>
-                            </label>
-                        <?php } ?>
-                    <?php } elseif ($question_type === 'true_false') { ?>
-                        <label style="margin-right:16px;">
-                            <input type="radio" name="answer[<?= $question_id; ?>]" value="true" required> True
-                        </label>
-                        <label>
-                            <input type="radio" name="answer[<?= $question_id; ?>]" value="false" required> False
-                        </label>
-                    <?php } ?>
+                    <?php
+                    switch ($question_type) {
+                        case 'text':
+                            echo '<input type="text" name="answer['.$question_id.']" required class="form-control" style="width:100%;padding:8px;" placeholder="Your answer...">';
+                            break;
+                        case 'multiple_choice':
+                        case 'checkbox':
+                            if (!empty($options_array)) {
+                                foreach ($options_array as $opt) {
+                                    echo '<label style="display:block;margin-bottom:8px;">';
+                                    echo '<input type="checkbox" name="answer['.$question_id.'][]" value="'.esc_attr($opt).'" required> '.esc_html($opt);
+                                    echo '</label>';
+                                }
+                            }
+                            break;
+                        case 'radio_button':
+                            if (!empty($options_array)) {
+                                foreach ($options_array as $opt) {
+                                    echo '<label style="margin-right:16px;">';
+                                    echo '<input type="radio" name="answer['.$question_id.']" value="'.esc_attr($opt).'" required> '.esc_html($opt);
+                                    echo '</label>';
+                                }
+                            }
+                            break;
+                        case 'dropdown':
+                            if (!empty($options_array)) {
+                                echo '<select name="answer['.$question_id.']" required style="width:100%;padding:8px;">';
+                                foreach ($options_array as $opt) {
+                                    echo '<option value="'.esc_attr($opt).'">'.esc_html($opt).'</option>';
+                                }
+                                echo '</select>';
+                            }
+                            break;
+                        case 'true_false':
+                            echo '<label style="margin-right:16px;"><input type="radio" name="answer['.$question_id.']" value="true" required> True</label>';
+                            echo '<label><input type="radio" name="answer['.$question_id.']" value="false" required> False</label>';
+                            break;
+                        case 'email':
+                            echo '<input type="email" name="answer['.$question_id.']" required class="form-control" style="width:100%;padding:8px;" placeholder="Your email...">';
+                            break;
+                        case 'phone':
+                            echo '<input type="tel" name="answer['.$question_id.']" required class="form-control" style="width:100%;padding:8px;" placeholder="Your phone number...">';
+                            break;
+                        case 'text_array':
+                            echo '<textarea name="answer['.$question_id.']" required class="form-control" style="width:100%;padding:8px;" placeholder="Enter multiple lines..."></textarea>';
+                            break;
+                        case 'date':
+                            echo '<input type="date" name="answer['.$question_id.']" required class="form-control" style="width:100%;padding:8px;">';
+                            break;
+                        case 'number':
+                            echo '<input type="number" name="answer['.$question_id.']" required class="form-control" style="width:100%;padding:8px;">';
+                            break;
+                        case 'file_upload':
+                            echo '<input type="file" name="answer['.$question_id.']" class="form-control" style="width:100%;padding:8px;">';
+                            break;
+                        case 'time':
+                            echo '<input type="time" name="answer['.$question_id.']" required class="form-control" style="width:100%;padding:8px;">';
+                            break;
+                        case 'range':
+                            echo '<input type="range" name="answer['.$question_id.']" min="0" max="100" class="form-control" style="width:100%;">';
+                            break;
+                        case 'textarea':
+                            echo '<textarea name="answer['.$question_id.']" required class="form-control" style="width:100%;padding:8px;" placeholder="Your answer..."></textarea>';
+                            break;
+                        default:
+                            echo '<input type="text" name="answer['.$question_id.']" required class="form-control" style="width:100%;padding:8px;" placeholder="Your answer...">';
+                    }
+                    ?>
                 </fieldset>
             <?php } ?>
 
