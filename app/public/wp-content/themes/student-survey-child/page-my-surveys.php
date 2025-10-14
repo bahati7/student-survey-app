@@ -31,6 +31,7 @@ if ($responses) {
         $survey_id = intval($_GET['survey_id']);
         $response_id = intval($_GET['response_id']);
         $answers = get_post_meta($response_id, '_response_answers', true);
+        $feedback = get_post_meta($response_id, '_response_feedback', true);
         $questions = get_posts([
             'post_type' => 'question',
             'meta_key' => '_question_parent_survey',
@@ -52,6 +53,12 @@ if ($responses) {
             echo '</ul>';
         } else {
             echo '<div class="no-questions">No questions found for this survey.</div>';
+        }
+        // Affiche le feedback de l'instructeur
+        if (!empty($feedback)) {
+            echo '<div class="instructor-feedback" style="background:#eafbe7;color:#256029;padding:14px 18px;border-radius:6px;margin-top:18px;border:1px solid #b7e4c7;">';
+            echo '<strong>Instructor Feedback:</strong> ' . esc_html($feedback);
+            echo '</div>';
         }
         echo '</div>';
     }
