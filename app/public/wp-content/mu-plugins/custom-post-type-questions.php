@@ -91,6 +91,37 @@ function populate_question_columns( $column, $post_id ) {
 }
 add_action( 'manage_question_posts_custom_column', 'populate_question_columns', 10, 2 );
 
+
+ // Adds a 'Required' column to the 'Question' list table.
+
+function add_question_required_column( $columns ) {
+    $new_columns = array();
+    foreach ( $columns as $key => $title ) {
+        $new_columns[$key] = $title;
+        if ( $key === 'title' ) { 
+            $new_columns['question_required'] = 'Required';
+        }
+    }
+    return $new_columns;
+}
+add_filter( 'manage_question_posts_columns', 'add_question_required_column' );
+
+// Populates the custom 'Required' column with data.
+
+function populate_question_required_column( $column, $post_id ) {
+    if ( 'question_required' === $column ) {
+        $required = get_post_meta( $post_id, '_question_required', true );
+        if ( '1' === $required ) {
+            echo '<span style="color: red; font-weight: bold;">Yes</span>';
+        } else {
+            echo 'No';
+        }
+    }
+}
+add_action( 'manage_question_posts_custom_column', 'populate_question_required_column', 10, 2 );
+
+
+
 // Add Survey filter in Questions admin list
 function filter_questions_by_survey( $post_type ) {
     if ( $post_type !== 'question' ) {
