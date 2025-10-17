@@ -145,6 +145,7 @@ function question_details_meta_box_callback( $post ) {
     $parent_survey_id = get_post_meta( $post->ID, '_question_parent_survey', true );
     $question_type    = get_post_meta( $post->ID, '_question_type', true );
     $answer_options   = get_post_meta( $post->ID, '_question_answer_options', true );
+    $question_required = get_post_meta( $post->ID, '_question_required', true );
 
     // Retrieve all surveys for dropdown list
     $surveys = get_posts( array(
@@ -195,6 +196,13 @@ function question_details_meta_box_callback( $post ) {
         
     </p>
 
+    <p>
+        <label for="question_required">
+            <input type="checkbox" name="question_required" id="question_required" value="1" <?php checked( $question_required, '1' ); ?>>
+            Required question
+        </label>
+    </p>
+
     <?php
 }
 
@@ -226,6 +234,12 @@ function question_save_meta_box_data( $post_id ) {
 
     if ( isset( $_POST['answer_options'] ) ) {
         update_post_meta( $post_id, '_question_answer_options', sanitize_textarea_field( $_POST['answer_options'] ) );
+    }
+    // Save required flag
+    if ( isset( $_POST['question_required'] ) && $_POST['question_required'] == '1' ) {
+        update_post_meta( $post_id, '_question_required', '1' );
+    } else {
+        delete_post_meta( $post_id, '_question_required' );
     }
 }
 add_action( 'save_post', 'question_save_meta_box_data' );
