@@ -176,6 +176,7 @@ function question_details_meta_box_callback( $post ) {
     $parent_survey_id = get_post_meta( $post->ID, '_question_parent_survey', true );
     $question_type    = get_post_meta( $post->ID, '_question_type', true );
     $answer_options   = get_post_meta( $post->ID, '_question_answer_options', true );
+    $question_required = get_post_meta( $post->ID, '_question_required', true );
 
     // Retrieve all surveys for dropdown list
     $surveys = get_posts( array(
@@ -218,6 +219,15 @@ function question_details_meta_box_callback( $post ) {
             <option value="range" <?php selected( $question_type, 'range' ); ?>>Range</option>
         </select>
     </p>
+    <p>
+        <label for="question_required">Is this question required?</label>
+        <br>
+        <?php $question_required = get_post_meta( $post->ID, '_question_required', true ); ?>
+        <select name="question_required" id="question_required" style="width:100%;">
+            <option value="1" <?php selected( $question_required, '1' ); ?>>Required</option>
+            <option value="0" <?php selected( $question_required, '0' ); ?>>Optional</option>
+        </select>
+    </p>
 
     <p>
         <label for="answer_options">Answer Options</label>
@@ -253,6 +263,9 @@ function question_save_meta_box_data( $post_id ) {
 
     if ( isset( $_POST['question_type'] ) ) {
         update_post_meta( $post_id, '_question_type', sanitize_text_field( $_POST['question_type'] ) );
+    }
+    if ( isset( $_POST['question_required'] ) ) {
+        update_post_meta( $post_id, '_question_required', sanitize_text_field( $_POST['question_required'] ) );
     }
 
     if ( isset( $_POST['answer_options'] ) ) {
