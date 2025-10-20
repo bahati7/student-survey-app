@@ -151,12 +151,18 @@ $questions = get_posts(array(
                         case 'multiple_choice':
                         case 'checkbox':
                             if (!empty($options_array)) {
+
                                     // For checkbox groups we remove HTML 'required' and rely on client-side & server-side validation
                                     foreach ($options_array as $opt) {
                                         echo '<label style="display:block;margin-bottom:8px;">';
                                         echo '<input type="checkbox" name="answer['.$question_id.'][]" value="'.esc_attr($opt).'"> '.esc_html($opt);
                                         echo '</label>';
                                     }
+
+                                foreach ($options_array as $opt) {
+                                    echo '<label style="display:block;margin-bottom:8px;">';
+                                    echo '<input type="checkbox" name="answer['.$question_id.'][]" value="'.esc_attr($opt).'" ' . ($is_required ? 'required' : '') . '> '.esc_html($opt);
+                                    echo '</label>';
                                 }
                             break;
                         case 'radio_button':
