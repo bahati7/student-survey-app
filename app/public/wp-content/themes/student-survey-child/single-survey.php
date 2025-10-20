@@ -36,9 +36,21 @@ if (is_user_logged_in()) {
 $success_message = '';
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['answer']) && is_user_logged_in() && !$already_responded) {
     $answers = $_POST['answer'];
+    $validation_errors = array();
     $user_id = get_current_user_id();
     $clean_answers = array();
     foreach ($answers as $question_id => $response) {
+        $is_required = get_post_meta($question_id, '_question_required', true) === '1';
+        // Check required
+        if ($is_required) {
+            if (is_array($response)) {
+                $empty = true;
+                foreach ($response as $r) { if (strlen(trim($r))>0) { $empty = false; break; } }
+                if ($empty) $validation_errors[] = $question_id;
+            } else {
+                if (strlen(trim($response)) === 0) $validation_errors[] = $question_id;
+            }
+        }
         if (is_array($response)) {
             $response = array_map('sanitize_text_field', $response);
             $clean_answers[$question_id] = $response;
@@ -46,6 +58,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['answer']) && is_user_
             $clean_answers[$question_id] = sanitize_text_field($response);
         }
     }
+    if (!empty($validation_errors)) {
+        $success_message = "<div class='survey-error' style='background:#f8d7da;color:#721c24;padding:12px 18px;border-radius:6px;margin-bottom:18px;border:1px solid #f5c6cb;'>Please fill all required questions before submitting.</div>";
+    } else {
     // Crée un post de type 'response'
     $response_post = array(
         'post_type'    => 'response',
@@ -61,6 +76,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['answer']) && is_user_
         $success_message = "<div class='survey-success' style='background:#d4edda;color:#155724;padding:12px 18px;border-radius:6px;margin-bottom:18px;border:1px solid #c3e6cb;'>Merci, vos réponses ont bien été enregistrées !</div>";
     } else {
         $success_message = "<div class='survey-error' style='background:#f8d7da;color:#721c24;padding:12px 18px;border-radius:6px;margin-bottom:18px;border:1px solid #f5c6cb;'>Erreur lors de l'enregistrement des réponses.</div>";
+    }
     }
 }
 
@@ -101,6 +117,7 @@ $questions = get_posts(array(
                 $question_id = $question->ID;
                 $question_text = $question->post_title;
                 $question_type = get_post_meta($question_id, '_question_type', true);
+                $is_required = get_post_meta($question_id, '_question_required', true) === '1';
                 $options = get_post_meta($question_id, '_question_answer_options', true);
                 $options_array = $options ? array_filter(array_map('trim', explode("\n", $options))) : [];
             ?>
@@ -108,19 +125,19 @@ $questions = get_posts(array(
                     <legend style="font-weight:bold;font-size:1.1em;margin-bottom:12px;">
                         Question <?= ($i+1) ?> / <?= $total ?> :
                     </legend>
-                    <p style="margin-bottom:18px;"><?= esc_html($question_text); ?></p>
+                    <p style="margin-bottom:18px;"><?= esc_html($question_text); ?> <?php if ($is_required) echo '<span style="color:#d00;font-weight:bold;">*</span>'; ?></p>
 
                     <?php
                     switch ($question_type) {
                         case 'text':
-                            echo '<input type="text" name="answer['.$question_id.']" required class="form-control" style="width:100%;padding:8px;" placeholder="Your answer...">';
+                            echo '<input type="text" name="answer['.$question_id.']" ' . ($is_required ? 'required' : '') . ' class="form-control" style="width:100%;padding:8px;" placeholder="Your answer...">';
                             break;
                         case 'multiple_choice':
                         case 'checkbox':
                             if (!empty($options_array)) {
                                 foreach ($options_array as $opt) {
                                     echo '<label style="display:block;margin-bottom:8px;">';
-                                    echo '<input type="checkbox" name="answer['.$question_id.'][]" value="'.esc_attr($opt).'" required> '.esc_html($opt);
+                                    echo '<input type="checkbox" name="answer['.$question_id.'][]" value="'.esc_attr($opt).'" ' . ($is_required ? 'required' : '') . '> '.esc_html($opt);
                                     echo '</label>';
                                 }
                             }
@@ -129,14 +146,14 @@ $questions = get_posts(array(
                             if (!empty($options_array)) {
                                 foreach ($options_array as $opt) {
                                     echo '<label style="margin-right:16px;">';
-                                    echo '<input type="radio" name="answer['.$question_id.']" value="'.esc_attr($opt).'" required> '.esc_html($opt);
+                                    echo '<input type="radio" name="answer['.$question_id.']" value="'.esc_attr($opt).'" ' . ($is_required ? 'required' : '') . '> '.esc_html($opt);
                                     echo '</label>';
                                 }
                             }
                             break;
                         case 'dropdown':
                             if (!empty($options_array)) {
-                                echo '<select name="answer['.$question_id.']" required style="width:100%;padding:8px;">';
+                                echo '<select name="answer['.$question_id.']" ' . ($is_required ? 'required' : '') . ' style="width:100%;padding:8px;">';
                                 foreach ($options_array as $opt) {
                                     echo '<option value="'.esc_attr($opt).'">'.esc_html($opt).'</option>';
                                 }
@@ -144,35 +161,35 @@ $questions = get_posts(array(
                             }
                             break;
                         case 'true_false':
-                            echo '<label style="margin-right:16px;"><input type="radio" name="answer['.$question_id.']" value="true" required> True</label>';
-                            echo '<label><input type="radio" name="answer['.$question_id.']" value="false" required> False</label>';
+                            echo '<label style="margin-right:16px;"><input type="radio" name="answer['.$question_id.']" value="true" ' . ($is_required ? 'required' : '') . '> True</label>';
+                            echo '<label><input type="radio" name="answer['.$question_id.']" value="false" ' . ($is_required ? 'required' : '') . '> False</label>';
                             break;
                         case 'email':
-                            echo '<input type="email" name="answer['.$question_id.']" required class="form-control" style="width:100%;padding:8px;" placeholder="Your email...">';
+                            echo '<input type="email" name="answer['.$question_id.']" ' . ($is_required ? 'required' : '') . ' class="form-control" style="width:100%;padding:8px;" placeholder="Your email...">';
                             break;
                         case 'phone':
-                            echo '<input type="tel" name="answer['.$question_id.']" required class="form-control" style="width:100%;padding:8px;" placeholder="Your phone number...">';
+                            echo '<input type="tel" name="answer['.$question_id.']" ' . ($is_required ? 'required' : '') . ' class="form-control" style="width:100%;padding:8px;" placeholder="Your phone number...">';
                             break;
                         case 'text_array':
-                            echo '<textarea name="answer['.$question_id.']" required class="form-control" style="width:100%;padding:8px;" placeholder="Enter multiple lines..."></textarea>';
+                            echo '<textarea name="answer['.$question_id.']" ' . ($is_required ? 'required' : '') . ' class="form-control" style="width:100%;padding:8px;" placeholder="Enter multiple lines..."></textarea>';
                             break;
                         case 'date':
-                            echo '<input type="date" name="answer['.$question_id.']" required class="form-control" style="width:100%;padding:8px;">';
+                            echo '<input type="date" name="answer['.$question_id.']" ' . ($is_required ? 'required' : '') . ' class="form-control" style="width:100%;padding:8px;">';
                             break;
                         case 'number':
-                            echo '<input type="number" name="answer['.$question_id.']" required class="form-control" style="width:100%;padding:8px;">';
+                            echo '<input type="number" name="answer['.$question_id.']" ' . ($is_required ? 'required' : '') . ' class="form-control" style="width:100%;padding:8px;">';
                             break;
                         case 'file_upload':
-                            echo '<input type="file" name="answer['.$question_id.']" class="form-control" style="width:100%;padding:8px;">';
+                            echo '<input type="file" name="answer['.$question_id.']" ' . ($is_required ? 'required' : '') . ' class="form-control" style="width:100%;padding:8px;">';
                             break;
                         case 'time':
-                            echo '<input type="time" name="answer['.$question_id.']" required class="form-control" style="width:100%;padding:8px;">';
+                            echo '<input type="time" name="answer['.$question_id.']" ' . ($is_required ? 'required' : '') . ' class="form-control" style="width:100%;padding:8px;">';
                             break;
                         case 'range':
                             echo '<input type="range" name="answer['.$question_id.']" min="0" max="100" class="form-control" style="width:100%;">';
                             break;
                         case 'textarea':
-                            echo '<textarea name="answer['.$question_id.']" required class="form-control" style="width:100%;padding:8px;" placeholder="Your answer..."></textarea>';
+                            echo '<textarea name="answer['.$question_id.']" ' . ($is_required ? 'required' : '') . ' class="form-control" style="width:100%;padding:8px;" placeholder="Your answer..."></textarea>';
                             break;
                         default:
                             echo '<input type="text" name="answer['.$question_id.']" required class="form-control" style="width:100%;padding:8px;" placeholder="Your answer...">';
