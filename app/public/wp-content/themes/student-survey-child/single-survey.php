@@ -164,6 +164,7 @@ $questions = get_posts(array(
                                     echo '<input type="checkbox" name="answer['.$question_id.'][]" value="'.esc_attr($opt).'" ' . ($is_required ? 'required' : '') . '> '.esc_html($opt);
                                     echo '</label>';
                                 }
+                            }
                             break;
                         case 'radio_button':
                             if (!empty($options_array)) {
