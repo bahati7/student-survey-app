@@ -9,8 +9,8 @@ if(!current_user_can('student')) {
 }
 
 // Fetch current survey information
-$survey_id   = get_the_ID();
-$title       = get_the_title();
+$survey_id    = get_the_ID();
+$title        = get_the_title();
 $description = get_post_meta( $survey_id, '_survey_description', true );
 $start_date  = get_post_meta( $survey_id, '_survey_start_date', true );
 $end_date    = get_post_meta( $survey_id, '_survey_end_date', true );
@@ -151,20 +151,16 @@ $questions = get_posts(array(
                         case 'multiple_choice':
                         case 'checkbox':
                             if (!empty($options_array)) {
-
-                                    // For checkbox groups we remove HTML 'required' and rely on client-side & server-side validation
-                                    foreach ($options_array as $opt) {
-                                        echo '<label style="display:block;margin-bottom:8px;">';
-                                        echo '<input type="checkbox" name="answer['.$question_id.'][]" value="'.esc_attr($opt).'"> '.esc_html($opt);
-                                        echo '</label>';
-                                    }
-
+                                
+                                // For checkbox groups we remove HTML 'required' and rely on client-side & server-side validation
                                 foreach ($options_array as $opt) {
                                     echo '<label style="display:block;margin-bottom:8px;">';
-                                    echo '<input type="checkbox" name="answer['.$question_id.'][]" value="'.esc_attr($opt).'" ' . ($is_required ? 'required' : '') . '> '.esc_html($opt);
+                                    echo '<input type="checkbox" name="answer['.$question_id.'][]" value="'.esc_attr($opt).'"> '.esc_html($opt);
                                     echo '</label>';
                                 }
+                                
                             }
+                            // --- FIX: MISSING CLOSING CURLY BRACE FOR THE IF STATEMENT WAS HERE ---
                             break;
                         case 'radio_button':
                             if (!empty($options_array)) {
