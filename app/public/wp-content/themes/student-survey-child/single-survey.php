@@ -39,6 +39,22 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['answer']) && is_user_
     $validation_errors = array();
     $user_id = get_current_user_id();
     $clean_answers = array();
+    // Ensure required questions are detected even if no input was sent for them (e.g. unchecked checkboxes)
+    $required_posts = get_posts([
+        'post_type' => 'question',
+        'meta_query' => [
+            [ 'key' => '_question_parent_survey', 'value' => $survey_id, 'compare' => '=' ],
+            [ 'key' => '_question_required', 'value' => '1', 'compare' => '=' ],
+        ],
+        'posts_per_page' => -1,
+        'fields' => 'ids'
+    ]);
+    foreach ($required_posts as $req_qid) {
+        if (!isset($answers[$req_qid])) {
+            // no answer provided at all for this required question
+            $validation_errors[] = $req_qid;
+        }
+    }
     foreach ($answers as $question_id => $response) {
         $is_required = get_post_meta($question_id, '_question_required', true) === '1';
         // Check required
@@ -135,6 +151,14 @@ $questions = get_posts(array(
                         case 'multiple_choice':
                         case 'checkbox':
                             if (!empty($options_array)) {
+
+                                    // For checkbox groups we remove HTML 'required' and rely on client-side & server-side validation
+                                    foreach ($options_array as $opt) {
+                                        echo '<label style="display:block;margin-bottom:8px;">';
+                                        echo '<input type="checkbox" name="answer['.$question_id.'][]" value="'.esc_attr($opt).'"> '.esc_html($opt);
+                                        echo '</label>';
+                                    }
+
                                 foreach ($options_array as $opt) {
                                     echo '<label style="display:block;margin-bottom:8px;">';
                                     echo '<input type="checkbox" name="answer['.$question_id.'][]" value="'.esc_attr($opt).'" ' . ($is_required ? 'required' : '') . '> '.esc_html($opt);
@@ -237,3 +261,36 @@ button[disabled] {
 <?php
 get_footer();
 ?>
+<script>
+document.addEventListener('DOMContentLoaded', function(){
+    var form = document.getElementById('survey-form');
+    if (!form) return;
+    form.addEventListener('submit', function(e){
+        var invalidFound = false;
+        // Find all required groups (we marked them server-side with class 'required-group')
+        var groups = document.querySelectorAll('.survey-question');
+        for (var i=0;i<groups.length;i++){
+            var group = groups[i];
+            if (!group.classList.contains('required-group')) continue;
+            var checkboxes = group.querySelectorAll('input[type="checkbox"]');
+            if (!checkboxes || checkboxes.length===0) continue;
+            var ok = false;
+            for (var j=0;j<checkboxes.length;j++){
+                if (checkboxes[j].checked) { ok = true; break; }
+            }
+            if (!ok) {
+                invalidFound = true;
+                group.style.outline = '2px solid #f5c6cb';
+                group.scrollIntoView({behavior:'smooth', block:'center'});
+                break;
+            } else {
+                group.style.outline = '';
+            }
+        }
+        if (invalidFound) {
+            e.preventDefault();
+            alert('Please select at least one option for the required checkbox questions.');
+        }
+    });
+});
+</script>

@@ -122,3 +122,4 @@ Stack trace:
 [02-Oct-2025 08:43:56 UTC] PHP Parse error:  syntax error, unexpected token "<<" in C:\Users\Philemon_Dev\Local Sites\student-survey-app\app\public\wp-content\themes\student-survey-child\inc\dynamic-menu.php on line 9
 [02-Oct-2025 08:43:56 UTC] PHP Warning:  Trying to access array offset on value of type bool in C:\Users\Philemon_Dev\Local Sites\student-survey-app\app\public\wp-includes\class-wp-recovery-mode-email-service.php on line 367
 [02-Oct-2025 08:43:56 UTC] PHP Warning:  Trying to access array offset on value of type bool in C:\Users\Philemon_Dev\Local Sites\student-survey-app\app\public\wp-includes\class-wp-recovery-mode-email-service.php on line 368
+[20-Oct-2025 09:57:12 UTC] PHP Parse error:  syntax error, unexpected token "case" in C:\Users\Philemon_Dev\Local Sites\student-survey-app\app\public\wp-content\themes\student-survey-child\single-survey.php on line 168
