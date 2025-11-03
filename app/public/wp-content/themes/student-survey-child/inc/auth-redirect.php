@@ -23,6 +23,23 @@ add_action('wp_logout', function() {
     exit;
 });
 
+// Hide admin bar for students
+add_action('after_setup_theme', function() {
+    $user = wp_get_current_user();
+    if (in_array('student', (array) $user->roles)) {
+        show_admin_bar(false);
+    }
+});
+
+// Additional filter to hide admin bar for students
+add_filter('show_admin_bar', function($show) {
+    $user = wp_get_current_user();
+    if (in_array('student', (array) $user->roles)) {
+        return false;
+    }
+    return $show;
+});
+
 // Block wp-admin for students and instructors (no admin for eux)
 add_action('admin_init', function() {
     if ( is_admin() && !defined('DOING_AJAX') ) {
