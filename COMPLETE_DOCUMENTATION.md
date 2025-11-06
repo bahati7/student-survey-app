@@ -205,9 +205,6 @@ define( 'DB_HOST', 'localhost' );
 - **Purpose:** Local WordPress development environment
 - **OS:** Windows, macOS, Linux
 
-![Screenshot: Local by Flywheel Logo]
-*Placeholder: Local by Flywheel interface*
-
 #### 2. Git
 - **Version:** 2.0+
 - **Download:** [https://git-scm.com/](https://git-scm.com/)
