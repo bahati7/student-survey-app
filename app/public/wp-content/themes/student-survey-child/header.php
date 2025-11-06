@@ -6,7 +6,7 @@
     <title><?= the_title() ;?></title>
 </head>
 
-<body>
+<body <?php body_class(); ?>>
     <header class="site-header">
         <?=  do_shortcode('[dynamic_main_menu]');?>
     </header>

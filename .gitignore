@@ -17,3 +17,4 @@ Thumbs.db
 # Local by Flywheel
 .idea/
 .env
+/logs/
