@@ -14,7 +14,19 @@ add_shortcode('dynamic_main_menu', function() {
     } else {
         $menu[] = '<a href="' . esc_url(home_url('/')) . '">Home</a>';
     }
-    $menu[] = '<a href="' . esc_url(home_url('/about/')) . '">Abouts</a>';
+
+    // Lien dynamique pour la page About
+    $about_page = get_pages(array(
+        'meta_key' => '_wp_page_template',
+        'meta_value' => 'page-about.php',
+        'post_status' => 'publish',
+        'number' => 1
+    ));
+    if (!empty($about_page)) {
+        $menu[] = '<a href="' . esc_url(get_permalink($about_page[0]->ID)) . '">About</a>';
+    } else {
+        $menu[] = '<a href="' . esc_url(home_url('/about/')) . '">About</a>';
+    }
     if(is_user_logged_in() && current_user_can('student')) {
         $menu[] = '<a href="' . esc_url(home_url('/survey/')) . '">All Surveys</a>';
 
@@ -47,7 +59,7 @@ add_shortcode('dynamic_main_menu', function() {
             $dashboard = home_url('/dashboard/teacher/');
             $role_label = 'Instructor';
         } elseif (in_array('student', $user->roles)) {
-            $dashboard = home_url('/student-dashboard');
+            $dashboard ='';
             $role_label = 'Student';
         }
         $menu[] = '<div class="dynamic-menu-dropdown"><a href="#">' . esc_html($role_label) . '</a><div class="dynamic-menu-dropdown-content">'
