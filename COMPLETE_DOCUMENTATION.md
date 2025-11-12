@@ -106,8 +106,7 @@ git clone https://github.com/bahati7/student-survey-app
 5. WordPress credentials: admin / your-password
 6. Click **"Add Site"**
 
-![Screenshot: Local Site Creation]
-*Placeholder: Local by Flywheel site creation form*
+![](.\screens\2.png)
 
 #### Step 1*: Replace Files (2 min)
 1. In Local, click **"Go to site folder"**
