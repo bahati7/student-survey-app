@@ -20,6 +20,7 @@
    - [Administrator Guide](#administrator-guide)
    - [Instructor Guide](#instructor-guide)
    - [Student Guide](#student-guide)
+   - [How to Implement an About Page](#65-how-to-implement-an-about-page)
 7. [Developer Guide](#7-developer-guide)
 8. [Git Workflow](#8-git-workflow)
 9. [Troubleshooting](#9-troubleshooting)
@@ -940,6 +941,730 @@ Create as many questions as needed for your survey.
   - Logout
 
 ![](.\screens\21.png)
+
+---
+
+## 6.5. How to Implement an About Page
+
+### Overview
+
+The About page is an important component of the Student Survey App that provides information about the platform, its purpose, and how to use it. This section will guide you through creating and implementing a fully functional About page with proper styling and content.
+
+### Step 1: Create the About Page in WordPress
+
+#### Option A: Using WordPress Admin Interface
+
+1. **Login to WordPress Admin**
+   - Navigate to your site URL + `/wp-admin`
+   - Login with administrator credentials
+
+2. **Create a New Page**
+   - Go to **Pages → Add New**
+   - Title: "About"
+   - Slug: "about" (WordPress will auto-generate this)
+
+![](.\screens\30.png)
+
+3. **Add Content**
+
+Use the block editor to add the following content structure:
+
+**Header Section:**
+```
+# About Student Survey App
+
+Welcome to the Student Survey App, a comprehensive platform designed to streamline the survey creation and response process for educational institutions.
+```
+
+**Mission Statement:**
+```
+## Our Mission
+
+The Student Survey App aims to bridge the gap between instructors and students by providing an intuitive, accessible platform for gathering feedback, conducting assessments, and improving the educational experience.
+```
+
+**Features Section:**
+```
+## Key Features
+
+### For Instructors
+- Create unlimited custom surveys
+- Multiple question types (text, radio, dropdown, checkboxes)
+- Real-time response tracking
+- Comprehensive response analytics
+- Export survey data
+
+### For Students
+- Easy survey access and submission
+- Track completed surveys
+- Review past responses
+- User-friendly interface
+- Mobile-responsive design
+
+### For Administrators
+- Complete system oversight
+- User management
+- Survey moderation
+- Site configuration
+```
+
+**How It Works:**
+```
+## How It Works
+
+### 1. Registration
+Students can self-register through the platform. Instructors and administrators are created by system administrators.
+
+### 2. Survey Creation
+Instructors create surveys and add questions with various types:
+- Text input for short answers
+- Text areas for detailed responses
+- Radio buttons for single-choice questions
+- Dropdowns for selection lists
+- Multiple choice for multi-select options
+
+### 3. Taking Surveys
+Students log in, view available surveys, and submit their responses. The system tracks completion and stores all answers securely.
+
+### 4. Viewing Results
+Instructors can view all student responses, analyze trends, and export data for further analysis.
+```
+
+**Technology Stack:**
+```
+## Technology Stack
+
+- **Platform:** WordPress 6.0+
+- **Language:** PHP 8.0+
+- **Database:** MySQL 8.0+ / MariaDB
+- **Parent Theme:** Twenty Twenty Five
+- **Custom Development:** Child theme with modular architecture
+```
+
+**Getting Started:**
+```
+## Getting Started
+
+### For Students
+1. Click "Register as Student" in the User menu
+2. Complete the registration form
+3. Login with your credentials
+4. Navigate to "All Surveys" to view available surveys
+5. Click on any survey to respond
+6. View your completed surveys in "My Completed Surveys"
+
+### For Instructors
+1. Contact your administrator for an instructor account
+2. Login to WordPress admin
+3. Navigate to Surveys → Add New
+4. Create your survey and add questions
+5. View responses in the Survey dashboard
+
+### For Administrators
+1. Login to WordPress admin
+2. Manage users, surveys, and site settings
+3. Monitor system activity
+4. Configure site-wide options
+```
+
+**Contact Section:**
+```
+## Contact & Support
+
+For technical support, feature requests, or bug reports:
+- **GitHub:** [Repository Link]
+- **Email:** support@yourdomain.com
+- **Documentation:** [Link to full documentation]
+```
+
+4. **Publish the Page**
+   - Click **"Publish"** button
+   - Verify the page is live by clicking "View Page"
+
+#### Option B: Using Custom Page Template (Advanced)
+
+For more control over the design and layout, create a custom page template.
+
+### Step 2: Create a Custom About Page Template (Optional)
+
+If you want more design control, create a custom template file:
+
+1. **Create Template File**
+
+Navigate to: `wp-content/themes/student-survey-child/`
+
+Create a new file: `page-about.php`
+
+```php
+<?php
+/**
+ * Template Name: About Page
+ * Description: Custom template for the About page
+ */
+
+get_header();
+?>
+
+<div class="about-page-container">
+    <div class="about-header">
+        <h1><?php the_title(); ?></h1>
+    </div>
+
+    <div class="about-content">
+        <?php
+        while (have_posts()) :
+            the_post();
+            ?>
+            <div class="about-main-content">
+                <?php the_content(); ?>
+            </div>
+
+            <!-- Mission Section -->
+            <section class="about-section mission-section">
+                <h2>Our Mission</h2>
+                <p>The Student Survey App aims to bridge the gap between instructors and students by providing an intuitive, accessible platform for gathering feedback, conducting assessments, and improving the educational experience.</p>
+            </section>
+
+            <!-- Features Section -->
+            <section class="about-section features-section">
+                <h2>Key Features</h2>
+                <div class="features-grid">
+                    <div class="feature-box">
+                        <h3>👨‍🏫 For Instructors</h3>
+                        <ul>
+                            <li>Create unlimited custom surveys</li>
+                            <li>Multiple question types</li>
+                            <li>Real-time response tracking</li>
+                            <li>Comprehensive analytics</li>
+                            <li>Export survey data</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="feature-box">
+                        <h3>👨‍🎓 For Students</h3>
+                        <ul>
+                            <li>Easy survey access</li>
+                            <li>Track completed surveys</li>
+                            <li>Review past responses</li>
+                            <li>User-friendly interface</li>
+                            <li>Mobile-responsive design</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="feature-box">
+                        <h3>⚙️ For Administrators</h3>
+                        <ul>
+                            <li>Complete system oversight</li>
+                            <li>User management</li>
+                            <li>Survey moderation</li>
+                            <li>Site configuration</li>
+                            <li>Analytics dashboard</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- How It Works Section -->
+            <section class="about-section how-it-works-section">
+                <h2>How It Works</h2>
+                <div class="steps-container">
+                    <div class="step">
+                        <div class="step-number">1</div>
+                        <h3>Registration</h3>
+                        <p>Students self-register through the platform. Instructors are created by administrators.</p>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">2</div>
+                        <h3>Survey Creation</h3>
+                        <p>Instructors create surveys with various question types to gather specific feedback.</p>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">3</div>
+                        <h3>Taking Surveys</h3>
+                        <p>Students log in, view available surveys, and submit their responses securely.</p>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">4</div>
+                        <h3>Viewing Results</h3>
+                        <p>Instructors analyze responses and export data for further insights.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Technology Stack Section -->
+            <section class="about-section tech-stack-section">
+                <h2>Technology Stack</h2>
+                <div class="tech-list">
+                    <div class="tech-item">
+                        <strong>Platform:</strong> WordPress 6.0+
+                    </div>
+                    <div class="tech-item">
+                        <strong>Language:</strong> PHP 8.0+
+                    </div>
+                    <div class="tech-item">
+                        <strong>Database:</strong> MySQL 8.0+ / MariaDB
+                    </div>
+                    <div class="tech-item">
+                        <strong>Parent Theme:</strong> Twenty Twenty Five
+                    </div>
+                    <div class="tech-item">
+                        <strong>Architecture:</strong> Custom child theme with modular design
+                    </div>
+                </div>
+            </section>
+
+            <!-- Getting Started Section -->
+            <section class="about-section getting-started-section">
+                <h2>Getting Started</h2>
+                <div class="role-instructions">
+                    <div class="role-box">
+                        <h3>Students</h3>
+                        <ol>
+                            <li>Click "Register as Student"</li>
+                            <li>Complete registration form</li>
+                            <li>Login with credentials</li>
+                            <li>Browse available surveys</li>
+                            <li>Submit responses</li>
+                        </ol>
+                    </div>
+                    <div class="role-box">
+                        <h3>Instructors</h3>
+                        <ol>
+                            <li>Request instructor account</li>
+                            <li>Login to WordPress admin</li>
+                            <li>Create surveys</li>
+                            <li>Add questions</li>
+                            <li>View responses</li>
+                        </ol>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Contact Section -->
+            <section class="about-section contact-section">
+                <h2>Contact & Support</h2>
+                <p>For technical support, feature requests, or bug reports:</p>
+                <div class="contact-info">
+                    <p><strong>GitHub:</strong> <a href="https://github.com/bahati7/student-survey-app" target="_blank">Repository Link</a></p>
+                    <p><strong>Documentation:</strong> <a href="<?php echo esc_url(home_url('/documentation/')); ?>">Complete Documentation</a></p>
+                    <p><strong>Team:</strong> MKB Development Team</p>
+                </div>
+            </section>
+
+        <?php
+        endwhile;
+        ?>
+    </div>
+</div>
+
+<?php
+get_footer();
+?>
+```
+
+2. **Create Stylesheet for About Page**
+
+Add to `wp-content/themes/student-survey-child/assets/css/about-page.css`:
+
+```css
+/* About Page Styles */
+.about-page-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 20px;
+}
+
+.about-header {
+    text-align: center;
+    margin-bottom: 60px;
+    padding-bottom: 30px;
+    border-bottom: 3px solid #0073aa;
+}
+
+.about-header h1 {
+    font-size: 3em;
+    color: #0073aa;
+    margin-bottom: 20px;
+}
+
+.about-content {
+    font-size: 1.1em;
+    line-height: 1.8;
+}
+
+.about-section {
+    margin: 60px 0;
+    padding: 40px;
+    background: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.about-section h2 {
+    font-size: 2.2em;
+    color: #333;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+/* Mission Section */
+.mission-section {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+}
+
+.mission-section p {
+    font-size: 1.3em;
+    text-align: center;
+    line-height: 1.8;
+}
+
+/* Features Section */
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.feature-box {
+    background: white;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+}
+
+.feature-box:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+}
+
+.feature-box h3 {
+    font-size: 1.5em;
+    margin-bottom: 20px;
+    color: #0073aa;
+}
+
+.feature-box ul {
+    list-style: none;
+    padding: 0;
+}
+
+.feature-box ul li {
+    padding: 8px 0;
+    padding-left: 25px;
+    position: relative;
+}
+
+.feature-box ul li:before {
+    content: "✓";
+    position: absolute;
+    left: 0;
+    color: #46b450;
+    font-weight: bold;
+}
+
+/* How It Works Section */
+.steps-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.step {
+    text-align: center;
+    padding: 30px;
+    background: white;
+    border-radius: 10px;
+    position: relative;
+}
+
+.step-number {
+    width: 60px;
+    height: 60px;
+    background: #0073aa;
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2em;
+    font-weight: bold;
+    margin: 0 auto 20px;
+}
+
+.step h3 {
+    font-size: 1.4em;
+    margin-bottom: 15px;
+    color: #333;
+}
+
+.step p {
+    color: #666;
+    line-height: 1.6;
+}
+
+/* Technology Stack Section */
+.tech-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    margin-top: 30px;
+}
+
+.tech-item {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    border-left: 4px solid #0073aa;
+}
+
+.tech-item strong {
+    color: #0073aa;
+    display: block;
+    margin-bottom: 5px;
+}
+
+/* Getting Started Section */
+.role-instructions {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.role-box {
+    background: white;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.role-box h3 {
+    font-size: 1.6em;
+    color: #0073aa;
+    margin-bottom: 20px;
+}
+
+.role-box ol {
+    padding-left: 20px;
+}
+
+.role-box ol li {
+    padding: 10px 0;
+    line-height: 1.6;
+}
+
+/* Contact Section */
+.contact-section {
+    background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+    color: white;
+    text-align: center;
+}
+
+.contact-info {
+    margin-top: 30px;
+    font-size: 1.1em;
+}
+
+.contact-info p {
+    margin: 15px 0;
+}
+
+.contact-info a {
+    color: white;
+    text-decoration: underline;
+    font-weight: bold;
+}
+
+.contact-info a:hover {
+    color: #fff;
+    opacity: 0.8;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .about-header h1 {
+        font-size: 2em;
+    }
+    
+    .about-section {
+        padding: 20px;
+        margin: 30px 0;
+    }
+    
+    .features-grid,
+    .steps-container,
+    .tech-list,
+    .role-instructions {
+        grid-template-columns: 1fr;
+    }
+}
+```
+
+3. **Enqueue the Stylesheet**
+
+Add to `wp-content/themes/student-survey-child/inc/enqueue.php`:
+
+```php
+// Enqueue About Page Styles
+function enqueue_about_page_styles() {
+    if (is_page('about')) {
+        wp_enqueue_style(
+            'about-page-style',
+            get_stylesheet_directory_uri() . '/assets/css/about-page.css',
+            array(),
+            '1.0.0'
+        );
+    }
+}
+add_action('wp_enqueue_scripts', 'enqueue_about_page_styles');
+```
+
+### Step 3: Assign the Template to Your About Page
+
+1. **Edit the About Page**
+   - Go to **Pages → All Pages**
+   - Click on "About" page
+
+2. **Select Template**
+   - In the right sidebar, find "Page Attributes" or "Template"
+   - Select "About Page" from dropdown
+   - Click **"Update"**
+
+![Assigning Template](.\screens\27.png)
+
+### Step 4: Add About Link to Menu
+
+The About link is already included in the dynamic menu via `inc/dynamic-menu.php`:
+
+```php
+// About link (visible to all users)
+$menu[] = '<a href="' . esc_url(home_url('/about/')) . '">About</a>';
+```
+
+**Verify the menu includes:**
+- Home
+- About
+- Other role-specific links
+
+### Step 5: Test the About Page
+
+1. **View as Guest User**
+   - Open incognito/private browser window
+   - Navigate to your site
+   - Click "About" in the menu
+   - Verify content displays correctly
+
+2. **View as Logged-in Student**
+   - Login as a student
+   - Click "About" in menu
+   - Verify page is accessible
+
+3. **View as Instructor**
+   - Login as instructor
+   - Verify About page accessibility
+
+4. **Check Responsive Design**
+   - Resize browser window
+   - Test on mobile device
+   - Verify layout adapts properly
+
+### Step 6: Customize Content (Optional)
+
+You can further customize the About page with:
+
+**Additional Images:**
+```php
+<img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/about-hero.jpg" alt="About Us">
+```
+
+**Video Embed:**
+```php
+<div class="video-container">
+    <iframe width="560" height="315" 
+            src="https://www.youtube.com/embed/VIDEO_ID" 
+            frameborder="0" 
+            allowfullscreen>
+    </iframe>
+</div>
+```
+
+**Team Members Section:**
+```php
+<section class="team-section">
+    <h2>Meet the Team</h2>
+    <div class="team-grid">
+        <div class="team-member">
+            <img src="path/to/photo.jpg" alt="Team Member">
+            <h3>John Doe</h3>
+            <p>Lead Developer</p>
+        </div>
+        <!-- Add more team members -->
+    </div>
+</section>
+```
+
+### Step 7: SEO Optimization
+
+Install and configure an SEO plugin (like Yoast SEO):
+
+1. **Install Yoast SEO**
+   - **Plugins → Add New**
+   - Search "Yoast SEO"
+   - Install and activate
+
+2. **Configure About Page SEO**
+   - Edit About page
+   - Scroll to Yoast SEO section
+   - Add:
+     - Focus keyphrase: "Student Survey App"
+     - Meta description
+     - Social media preview
+
+### Step 8: Analytics (Optional)
+
+Track About page visits:
+
+1. **Add Google Analytics**
+2. **Track Events**
+3. **Monitor Page Views**
+
+### Troubleshooting
+
+**About Page Shows 404:**
+- Go to **Settings → Permalinks** → Click "Save"
+- Clear browser cache
+
+**Template Not Available:**
+- Verify `page-about.php` exists in theme folder
+- Check template header comment is correct
+- Refresh page in admin
+
+**CSS Not Loading:**
+- Clear browser cache (Ctrl+F5)
+- Verify file path in enqueue.php
+- Check file permissions
+
+**Menu Link Missing:**
+- Verify `inc/dynamic-menu.php` includes About link
+- Clear any caching plugins
+- Check theme is active
+
+### Maintenance
+
+**Regular Updates:**
+- Keep content current
+- Update contact information
+- Refresh screenshots
+- Add new features as they're developed
+
+**Backup:**
+- Save template files to Git repository
+- Document any customizations
+- Keep version history
 
 ---
 
