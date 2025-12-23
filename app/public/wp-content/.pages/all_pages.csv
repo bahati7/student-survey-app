@@ -1,0 +1,9 @@
+
+<!-- // Autoriser l'inscription publique pour les étudiants -->
+<!-- // Restrict access to admin pages for non-admins -->
+ID,post_title,post_name,post_date,post_status
+56,about,about,"2025-11-12 14:30:20",publish
+33,"Home Page",home-page,"2025-10-02 09:40:54",publish
+29,student,student,"2025-09-24 09:15:08",publish
+3,"Privacy Policy",privacy-policy,"2025-08-20 08:47:27",draft
+2,"Sample Page",sample-page,"2025-08-20 08:47:27",publish
