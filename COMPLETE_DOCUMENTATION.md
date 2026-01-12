@@ -5,7 +5,7 @@
 **Date:** October 31, 2025  
 **Project:** WordPress-based Survey Application
 
-![](.\screens\8.png)
+![](screens\8.png)
 
 ---
 
@@ -40,7 +40,7 @@ The **Student Survey App** is a WordPress-based application that enables instruc
 - **Modern, responsive interface**
 - **Survey response tracking and history**
 
-![](.\screens\8.png)
+![](screens\8.png)
 *Placeholder: Main application interface showing homepage*
 
 ### Key Features
@@ -80,24 +80,24 @@ you can create a new site from scratch and replace the files with the ones from 
 #### Step 1: Create a new WebSite in Local by Flywheel (2 min)
 1. Open Local by Flywheel.
 2. Click the "+" button then choose Create a new site.
-   ![](.\screens\1.png)
+   ![](screens\1.png)
 3. Enter **Site Name:** `student-survey-app` and click Continue.
-   ![](.\screens\2.png)
+   ![](screens\2.png)
 4. Choose Environment: Preferred (ensure PHP 8.x, MySQL 8.x, WordPress 6.x) and click Continue.
-   ![](.\screens\3.png)
-   ![](.\screens\4.png)
-   ![](.\screens\5.png)
+   ![](screens\3.png)
+   ![](screens\4.png)
+   ![](screens\5.png)
 5. Set WordPress admin account (username, email, secure password) and click Create Site.
-   ![](.\screens\6.png)
+   ![](screens\6.png)
 6. Wait for provisioning to finish, then click Open Site and WP Admin to verify the site and dashboard are accessible.
-   ![](.\screens\7.png)
+   ![](screens\7.png)
 
 #### Step 2: Clone the Repository (2 min)
 ```bash
 cd C:\Users\YourName\Documents # .\Local Sites\student-survey-app
 git clone https://github.com/bahati7/student-survey-app
 ```
-![](.\screens\9.png)
+![](screens\9.png)
 
 #### Step 3: Create Site in Local (3 min)
 1. Open Local by Flywheel
@@ -107,7 +107,7 @@ git clone https://github.com/bahati7/student-survey-app
 5. WordPress credentials: admin / your-password
 6. Click **"Add Site"**
 
-![](.\screens\2.png)
+![](screens\2.png)
 
 #### Step 1*: Replace Files (2 min)
 1. In Local, click **"Go to site folder"**
@@ -115,7 +115,7 @@ git clone https://github.com/bahati7/student-survey-app
 3. Delete all contents
 4. Copy everything from `student-survey-app/app/public/` to this folder
 
-![](.\screens\12.png)
+![](screens\12.png)
 
 #### Step 4: Configure wp-config.php (1 min)
 1. In Local → **Database tab** → Note DB credentials
@@ -129,7 +129,7 @@ define( 'DB_PASSWORD', 'root' );
 define( 'DB_HOST', 'localhost' );
 ```
 
-![](.\screens\13.png)
+![](screens\13.png)
 
 #### Step 5: Import Database (2 min)
 1. In Local → Database → **"Open Adminer"**
@@ -137,7 +137,7 @@ define( 'DB_HOST', 'localhost' );
 3. Select `app/sql/local.sql`
 4. Click **Execute**
 
-![](.\screens\14.png)
+![](screens\14.png)
 
 #### Step 6: Start and Test (1 min)
 1. In Local, click **"Start site"**
@@ -145,7 +145,7 @@ define( 'DB_HOST', 'localhost' );
 3. Login to **WP Admin**
 4. Verify theme is active
 
-![](.\screens\15.png)
+![](screens\15.png)
 
 ### Quick Configuration
 
@@ -153,18 +153,18 @@ define( 'DB_HOST', 'localhost' );
 1. Go to **Appearance → Themes**
 2. Activate **"Student Survey Child Theme"**
 
-![](.\screens\16.png)
+![](screens\16.png)
 
 **Regenerate Permalinks:**
 1. Go to **Settings → Permalinks**
 2. Click **"Save Changes"**
 
-![](.\screens\17.png)
+![](screens\17.png)
 
 **Verify Custom Post Types:**
 - Check left menu for **"Surveys"** and **"Questions"**
 
-![](.\screens\18.png)
+![](screens\18.png)
 
 ### Quick Test
 
@@ -187,11 +187,11 @@ define( 'DB_HOST', 'localhost' );
 3. Create account
 4. Verify menu adapts to student role
 
-![](.\screens\19.png)
+![](screens\19.png)
 
-![](.\screens\20.png)
+![](screens\20.png)
 
-![](.\screens\21.png)
+![](screens\21.png)
 
 ---
 
@@ -269,7 +269,7 @@ cd student-survey-app
 ```
 
 ![Screenshot: Git Clone Command]
-![](.\screens\22.png)
+![](screens\22.png)
 
 #### Verify Clone
 
@@ -299,25 +299,25 @@ You should see:
    - Site Name: `student-survey-app`
    - Choose your preferred environment or use default
 
-![](.\screens\1.png)
+![](screens\1.png)
 
-![](.\screens\2.png)
+![](screens\2.png)
 
-![](.\screens\3.png)
+![](screens\3.png)
 
 5. **Choose Environment:**
    - PHP Version: 8.0 or higher
    - Web Server: nginx (recommended) or Apache
    - MySQL Version: 8.0 or higher
 
-![](.\screens\4.png)
+![](screens\4.png)
 
 6. **Setup WordPress:**
    - Username: `admin`
    - Password: Choose a strong password
    - Email: Your email address
 
-![](.\screens\6.png)
+![](screens\6.png)
 
 7. **Click "Add Site"** and wait for setup to complete
 
@@ -333,9 +333,9 @@ You should see:
    - In Local, select your site
    - Click **"Go to site folder"** or right-click → **"Reveal in Finder/Explorer"**
 
-![](.\screens\23.png)
+![](screens\23.png)
 
-![](.\screens\24.png)
+![](screens\24.png)
 
 2. **Navigate to `app/public/`**
 
@@ -347,7 +347,7 @@ You should see:
    - Paste into Local's `app/public/` folder
    - Overwrite when prompted
 
-![](.\screens\12.png)
+![](screens\12.png)
 
 ### Step 4: Create wp-config.php
 
@@ -362,7 +362,7 @@ You should see:
      - Password (usually `root`)
      - Host (usually `localhost`)
 
-![](.\screens\13.png)
+![](screens\13.png)
 
 2. **Create Configuration File:**
    - Navigate to `app/public/` folder
@@ -409,7 +409,7 @@ define( 'WP_DEBUG_DISPLAY', false );
    - You should see a success message
    - Check that tables are listed (wp_posts, wp_users, etc.)
 
-![](.\screens\14.png)
+![](screens\14.png)
 
 ### Step 6: Start the Site
 
@@ -417,7 +417,7 @@ define( 'WP_DEBUG_DISPLAY', false );
    - Click **"Start site"** if not already running
    - Wait for all services to start (green indicators)
 
-![](.\screens\15.png)
+![](screens\15.png)
 
 2. **Open Site:**
    - Click **"Open site"** to view frontend
@@ -428,7 +428,7 @@ define( 'WP_DEBUG_DISPLAY', false );
    - Login to admin with your credentials
    - Check that theme is active
 
-![](.\screens\25.png)
+![](screens\25.png)
 
 ### Step 7: Initial Configuration
 
@@ -438,7 +438,7 @@ define( 'WP_DEBUG_DISPLAY', false );
 2. Activate **"Student Survey Child Theme"**
 3. Verify that parent theme "Twenty Twenty Five" is present
 
-![](.\screens\26.png)
+![](screens\26.png)
 
 #### Regenerate Permalinks
 
@@ -446,7 +446,7 @@ define( 'WP_DEBUG_DISPLAY', false );
 2. Select **"Post name"** (recommended)
 3. Click **"Save Changes"**
 
-![](.\screens\17.png)
+![](screens\17.png)
 
 #### Verify Custom Post Types
 
@@ -458,7 +458,7 @@ define( 'WP_DEBUG_DISPLAY', false );
    - Go to Settings → Permalinks → Save again
    - Verify files in `wp-content/mu-plugins/` exist
 
-![](.\screens\26.png)
+![](screens\26.png)
 
 #### Create Required Pages
 
@@ -469,7 +469,7 @@ Create these pages with their respective templates:
 - Template: "Home Context"
 - Publish
 
-![](.\screens\27.png)
+![](screens\27.png)
 
 **2. All Surveys Page:**
 - Title: "All Surveys"
@@ -486,7 +486,7 @@ Create these pages with their respective templates:
 - Template: "Survey Page"
 - Publish
 
-![](.\screens\27.png)
+![](screens\27.png)
 
 #### Add Dynamic Menu
 
@@ -672,7 +672,7 @@ As an administrator, you have full access to all WordPress features plus survey 
 3. **Role:** Select **"Instructor"**
 4. Click **"Add New User"**
 
-![](.\screens\28.png)
+![](screens\28.png)
 
 **Create Student:**
 
@@ -690,7 +690,7 @@ Students can self-register, but you can also create them:
 3. Change **"Role"** dropdown
 4. Click **"Update Profile"**
 
-![](.\screens\29.png)
+![](screens\29.png)
 
 #### Managing Surveys
 
@@ -940,7 +940,7 @@ Create as many questions as needed for your survey.
   - Profile
   - Logout
 
-![](.\screens\21.png)
+![](screens\21.png)
 
 ---
 
@@ -963,7 +963,7 @@ The About page is an important component of the Student Survey App that provides
    - Title: "About"
    - Slug: "about" (WordPress will auto-generate this)
 
-![](.\screens\30.png)
+![](screens\30.png)
 
 3. **Add Content**
 
@@ -1534,7 +1534,7 @@ add_action('wp_enqueue_scripts', 'enqueue_about_page_styles');
    - Select "About Page" from dropdown
    - Click **"Update"**
 
-![Assigning Template](.\screens\27.png)
+![Assigning Template](screens\27.png)
 
 ### Step 4: Add About Link to Menu
 
