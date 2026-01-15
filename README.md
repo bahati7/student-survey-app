@@ -1,61 +1,25 @@
-# Student Survey Application - Local Setup Guide
-Welcome to the MKB team! This document provides a step-by-step guide for setting up your local development environment to work on the Student Survey Application project.
+# Student Survey Application
+The Student Survey Application is a specialized WordPress-based platform designed to facilitate feedback loops between instructors and students. It allows instructors to create structured surveys and questions, while providing a dedicated portal for students to submit responses and track their progress.
 
-## Prerequisites
-Before you begin, please ensure you have the following installed on your machine:
+## Project Overview
+This application extends WordPress functionality using Custom Post Types (CPTs) and custom user roles to create a secure, academic-focused environment.
 
-Local by Flywheel: [A simple and powerful local development tool for WordPress](https://localwp.com/)
 
-Git: [version control system used to manage our codebase.](https://git-scm.com/)
+## Key Features
+- Custom Roles: Specialized Instructor and Student capabilities.
 
-## Team Member Setup Instructions
-Once the project repository has been shared with you, follow these steps to clone the project and get it running locally.
+- Survey Management: Tools for instructors to build complex question sets.
 
-### Step 1: Clone the GitHub Repository
-Open your terminal or command prompt.
+- Submission Logic: Automated validation to prevent duplicate entries and ensure data integrity.
 
-Navigate to the directory where you store your projects.
+- Cross-Platform Support: Built to run on standard LAMP/LEMP stacks (Apache/Nginx).
 
-Go to the project page on GitHub, click on the "Code" button, and copy the HTTPS URL.
+## Technical Testing & Use Cases
+If you are a developer or a tester looking for specific verification steps, technical requirements, or use-case documentation, please refer to the following file:
+[Documentation](https://github.com/bahati7/student-survey-app/blob/develop/documentation.md)
 
-In your terminal, use the git clone command with the copied URL to download the project files:
+## Team & Contribution
 
-git clone https://github.com/your-username/student-survey-app.git
+This project is managed by the MKB Team. Please ensure you are working on a feature branch before submitting a Pull Request to develop.
 
-### Step 2: Import the Site into Local by Flywheel
-Open Local by Flywheel.
-
-Click the "+" button on the bottom left to "Add a local site."
-
-Choose the option to "Import site from a folder," or, in many cases, you can simply drag the student-survey-app folder you just cloned directly into the Local application window.
-
-Local will now configure a new site instance using the project's files.
-
-### Step 3: Create the wp-config.php File
-Since the wp-config.php file is ignored by Git for security reasons, each team member must create their own.
-
-In your file explorer, navigate to the root directory of the student-survey-app project.
-
-Open the site in Local by Flywheel and go to the "Database" tab. Copy the database name, username, and password.
-
-In the project folder, locate the file named wp-config-sample.php.
-
-Copy the content of wp-config-sample.php and create a new file in the same directory named wp-config.php.
-
-In the new wp-config.php file, update the following lines with the database credentials you copied from Local:
-
-```
-define('DB_NAME', 'your_local_db_name');
-define('DB_USER', 'your_local_db_user');
-define('DB_PASSWORD', 'your_local_db_password');
-define('DB_HOST', 'localhost');
-```
-
-### Step 4: Start the Site and Verify Installation
-Back in Local by Flywheel, click the "Start Site" button for the student-survey-app project.
-
-Click "Open Site" to view the live website or "Admin" to access the WordPress dashboard.
-
-Your local environment is now set up and ready. You should have a fully functional WordPress site running with our project files.
-
-Happy coding! :joy:
+Happy coding! 🚀
