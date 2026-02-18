@@ -1,0 +1,212 @@
+/*
+Theme Name:   Student Survey Child Theme
+Theme URI:    https://michaelkentburns.com/
+Description:  Child theme for our student survey application.
+Author:       MKB students
+Author URI:   https://michaelkentburns.com/
+Template:     twentytwentyfive
+Version:      1.0.0
+Text Domain:  student-survey-child
+*/
+
+/* --- Night Blue Header & Footer --- */
+.site-header,
+.site-footer {
+    background: #16203a;
+    color: #fff;
+    padding: 1.7rem 0 1.2rem 0;
+    box-shadow: 0 4px 24px rgba(20, 30, 60, 0.13);
+    border-bottom: 2px solid #223355;
+}
+
+.site-footer {
+    border-top: 2px solid #223355;
+    border-bottom: none;
+}
+
+/* --- Modern Block Menu --- */
+.wp-block-navigation {
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+    font-size: 1.12rem;
+    font-weight: 600;
+    letter-spacing: 0.01em;
+    background: rgba(22, 32, 58, 0.85);
+    border-radius: 10px;
+    box-shadow: 0 2px 12px rgba(20, 30, 60, 0.10);
+    padding: 0.2rem 1.2rem;
+}
+
+.wp-block-navigation__container {
+    display: flex;
+    gap: 1.5rem;
+    padding: 0;
+    margin: 0;
+}
+
+.wp-block-navigation-item__content,
+.wp-block-navigation-link__content {
+    color: #fff;
+    text-decoration: none;
+    padding: 0.55rem 1.3rem;
+    border-radius: 6px;
+    transition: background 0.18s, color 0.18s, box-shadow 0.18s;
+    display: flex;
+    align-items: center;
+    position: relative;
+    box-shadow: 0 1px 2px rgba(20, 30, 60, 0.04);
+}
+
+.wp-block-navigation-item__content:hover,
+.wp-block-navigation-link__content:hover,
+.wp-block-navigation-item__content:focus,
+.wp-block-navigation-link__content:focus {
+    background: #223355;
+    color: #ffd700;
+    box-shadow: 0 2px 8px rgba(34, 51, 85, 0.13);
+}
+
+.wp-block-navigation-item.current-menu-item>.wp-block-navigation-item__content,
+.wp-block-navigation-link.is-active {
+    background: #223355;
+    color: #ffd700;
+    font-weight: 700;
+    box-shadow: 0 2px 8px rgba(34, 51, 85, 0.18);
+}
+
+.wp-block-navigation__submenu-container {
+    background: #1a2233;
+    border-radius: 8px;
+    box-shadow: 0 8px 32px rgba(20, 30, 60, 0.18);
+    padding: 0.5rem 0;
+    min-width: 170px;
+    border: 1px solid #223355;
+}
+
+.wp-block-navigation__submenu-container .wp-block-navigation-item__content {
+    color: #fff;
+    padding: 0.5rem 1.2rem;
+    border-radius: 6px;
+}
+
+.wp-block-navigation__submenu-container .wp-block-navigation-item__content:hover {
+    background: #223355;
+    color: #ffd700;
+}
+
+.site-header .wp-block-navigation {
+    margin-bottom: 0;
+}
+
+.site-footer .wp-block-navigation {
+    margin-top: 0.5rem;
+}
+
+.site-footer p {
+    color: #bfc9e0;
+    font-size: 0.98rem;
+}
+
+/* --- Dynamic Main Menu --- */
+.dynamic-main-menu {
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.12rem;
+    font-weight: 600;
+    letter-spacing: 0.01em;
+    background: rgba(22, 32, 58, 0.92);
+    border-radius: 10px;
+    box-shadow: 0 2px 12px rgba(20, 30, 60, 0.10);
+    padding: 0.2rem 1.2rem;
+    margin: 0.5rem auto;
+    max-width: 900px;
+}
+
+.dynamic-main-menu a {
+    color: #fff;
+    text-decoration: none;
+    padding: 0.55rem 1.3rem;
+    border-radius: 6px;
+    transition: background 0.18s, color 0.18s, box-shadow 0.18s;
+    display: flex;
+    align-items: center;
+    position: relative;
+    box-shadow: 0 1px 2px rgba(20, 30, 60, 0.04);
+    font-weight: 500;
+}
+
+.dynamic-main-menu a:hover,
+.dynamic-main-menu a:focus {
+    background: #223355;
+    color: #ffd700;
+    box-shadow: 0 2px 8px rgba(34, 51, 85, 0.13);
+}
+
+/* --- Dynamic Menu Dropdown --- */
+.dynamic-menu-dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dynamic-menu-dropdown>a {
+    cursor: pointer;
+}
+
+.dynamic-menu-dropdown-content {
+    display: none;
+    position: absolute;
+    background: #1a2233;
+    min-width: 170px;
+    box-shadow: 0 8px 32px rgba(20, 30, 60, 0.18);
+    border-radius: 8px;
+    border: 1px solid #223355;
+    z-index: 100;
+    margin-top: 0.2rem;
+}
+
+.dynamic-menu-dropdown-content a {
+    color: #fff;
+    padding: 0.5rem 1.2rem;
+    text-decoration: none;
+    display: block;
+    border-radius: 6px;
+    transition: background 0.18s, color 0.18s;
+}
+
+.dynamic-menu-dropdown-content a:hover {
+    background: #223355;
+    color: #ffd700;
+}
+
+.dynamic-menu-dropdown:hover .dynamic-menu-dropdown-content,
+.dynamic-menu-dropdown:focus-within .dynamic-menu-dropdown-content {
+    display: block;
+}
+
+@media (max-width: 900px) {
+
+    .wp-block-navigation,
+    .wp-block-navigation__container {
+        flex-direction: column;
+        gap: 0.7rem;
+        align-items: flex-start;
+    }
+
+    .site-header,
+    .site-footer {
+        padding: 1rem 0 0.5rem 0;
+    }
+
+    .dynamic-main-menu {
+        flex-direction: column;
+        gap: 0.7rem;
+        align-items: center;
+        justify-content: center;
+        margin-left: auto;
+        margin-right: auto;
+        padding: 0.5rem 0.7rem;
+    }
+}

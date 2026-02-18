@@ -8,7 +8,11 @@ wp-config.php
 /wp-content/wflogs/
 
 # Database
-*.sql
+
+
+!.data/
+!.pages/
+!.posts/
 
 # OS-specific files
 .DS_Store
@@ -17,3 +21,4 @@ Thumbs.db
 # Local by Flywheel
 .idea/
 .env
+/logs/
