@@ -33,7 +33,7 @@ The system architecture reflects thoughtful planning and logical design.
 
 After logging out of the Admin account, the system was tested from the **Student perspective**.
 
-![Register as a student](test/previousSurvey/2026-02-22_17-42-56.png)
+![Register as a student](./test/previousSurvey/2026-02-22_17-42-56.png)
 
 The student dashboard displayed:
 
@@ -45,11 +45,11 @@ This confirms that role-based visibility and access control are functioning prop
 
 ### Accessed "All Surveys"
 
-![Welcome New Student](test/previousSurvey/2026-02-22_18-07-13.png)
+![Welcome New Student](./test/previousSurvey/2026-02-22_18-07-13.png)
 
 This view confirms that surveys created by the Admin are correctly accessible to students.
 
-![Access all surveys](test/previousSurvey/2026-02-22_18-07-45.png)
+![Access all surveys](./test/previousSurvey/2026-02-22_18-07-45.png)
 
 **Suggested Action for Reviewers:**
 
@@ -61,7 +61,7 @@ Log in as a student and verify:
 
 ### Access Questions
 
-![See all the questions](test/previousSurvey/2026-02-22_18-09-23.png)
+![See all the questions](./test/previousSurvey/2026-02-22_18-09-23.png)
 
 The question board loads properly. However, a structural issue was identified.
 
@@ -69,7 +69,7 @@ The question board loads properly. However, a structural issue was identified.
 
 Some questions are configured as **multiple choice (checkboxes)**.
 
-![Multi-choice vs radio logic](test/previousSurvey/MultipleQuestionsVsRadio.png)
+![Multi-choice vs radio logic](./test/previousSurvey/MultipleQuestionsVsRadio.png)
 
 #### Problem
 
@@ -116,7 +116,7 @@ This is where major system flow issues were discovered.
 
 ### First Instructor Attempt – Mislinked Information
 
-![Mislink information](test/previousSurvey/2026-02-22_18-35-25.png)
+![Mislink information](./test/previousSurvey/2026-02-22_18-35-25.png)
 
 On the first attempt, the instructor login resulted in:
 
@@ -153,7 +153,7 @@ This may indicate:
 
 ### After Restart – Dashboard Access Issue
 
-![Instructor dashboard](test/previousSurvey/2026-02-22_18-35-27.png)
+![Instructor dashboard](./test/previousSurvey/2026-02-22_18-35-27.png)
 
 Even after successful login:
 
