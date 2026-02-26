@@ -13,6 +13,9 @@ add_filter('login_redirect', function($redirect_to, $request, $user) {
         if (in_array('student', $user->roles, true)) {
             return home_url('/');
         }
+        if (in_array('instructor', $user->roles, true)) {
+            return admin_url();
+        }
     }
     return $redirect_to;
 }, 10, 3);
