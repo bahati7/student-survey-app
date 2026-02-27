@@ -7,11 +7,8 @@ add_filter('login_redirect', function($redirect_to, $request, $user) {
         if (in_array('administrator', $user->roles, true)) {
             return admin_url();
         }
-        if (in_array('teacher', $user->roles, true)) {
+        if (in_array('teacher', $user->roles, true) || in_array('instructor', $user->roles, true)) {
             return home_url('/dashboard/');
-        }
-        if (in_array('instructor', $user->roles, true)) {
-            return admin_url();
         }
         if (in_array('student', $user->roles, true)) {
             return home_url('/');
@@ -51,7 +48,7 @@ add_action('admin_init', function() {
             wp_redirect(home_url('/'));
             exit;
         }
-        if ( in_array('teacher', (array) $user->roles) ) {
+        if ( in_array('teacher', (array) $user->roles) || in_array('instructor', (array) $user->roles) ) {
             wp_redirect(home_url('/dashboard/'));
             exit;
         }
