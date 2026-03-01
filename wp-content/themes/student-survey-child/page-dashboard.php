@@ -146,35 +146,117 @@
             <h3>New Surveys</h3>
             <p class="number"><?= max(0, $new_surveys); ?></p>
         </div>
-    </div>
+</div>
         
-    <div class="actions">
-        <a href="<?= home_url('/survey/'); ?>" class="btn">Take a Survey</a>
-    </div>
+        <div class="actions">
+            <a href="<?= home_url('/survey/'); ?>" class="btn">Take a Survey</a>
+        </div>
 
-    <fieldset class="chart-container">
-        <legend><h3 style="margin: 0;">Stats</h3></legend>
+        <fieldset class="chart-container">
+            <legend><h3 style="margin: 0;">Stats</h3></legend>
 
-        <div class="bar-chart">
-            <h4 style="margin: 0;">Completed surveys <span style="right: 0;float: right"><?= $completed_surveys_chart; ?>%</span></h4>
-            <div class="bar">
-                <div class="bar-inner" style="width:<?= $completed_surveys_chart; ?>%"></div>
+            <div class="bar-chart">
+                <h4 style="margin: 0;">Completed surveys <span style="right: 0;float: right"><?= $completed_surveys_chart; ?>%</span></h4>
+                <div class="bar">
+                    <div class="bar-inner" style="width:<?= $completed_surveys_chart; ?>%"></div>
+                </div>
+
+                <h4 style="margin: 0;">New surveys <span style="right: 0;float: right"><?= $new_surveys_chart; ?>%</span></h4>
+                <div class="bar">
+                    <div class="bar-inner" style="width:<?= $new_surveys_chart; ?>%"></div>
+                </div>
+                
+                <h4 style="margin: 0;">Feedback Received <span style="right: 0;float: right"><?= $feedback_count_chart; ?>%</span></h4>
+                <div class="bar">
+                    <div class="bar-inner" style="width:<?= $feedback_count_chart; ?>%"></div>
+                </div>
+
+            </div>
+        </fieldset>
+
+    <?php endif; ?>
+
+    <?php if ($is_instructor): ?>
+
+    <?php
+        // Total surveys in system
+        $total_surveys = wp_count_posts('survey')->publish;
+
+        // My surveys
+        $my_surveys_posts = get_posts(array(
+            'post_type'      => 'survey',
+            'author'         => $user_id,
+            'posts_per_page' => -1,
+            'fields'         => 'ids'
+        ));
+
+        $my_surveys = count($my_surveys_posts);
+        $my_surveys_chart = $my_surveys > 0 ? number_format(($my_surveys * 100) / $total_surveys, 0) : 0;
+
+        // Given Feedbacks
+
+        $responses_with_feedback = new WP_Query(array(
+            'post_type'      => 'response',
+            'posts_per_page' => -1,
+            'meta_query'     => array(
+                'relation' => 'AND',
+                array(
+                    'key'     => '_response_survey_id',
+                    'value'   => $my_surveys_posts,
+                    'compare' => 'IN',
+                ),
+                array(
+                    'key'     => '_response_feedback',
+                    'value'   => '',
+                    'compare' => '!=',
+                ),
+            ),
+        ));
+
+        $feedback_given = $responses_with_feedback->found_posts;
+        $feedback_given_chart = $feedback_given > 0 ? number_format(($feedback_given * 100) / $my_surveys,0) : 0;
+
+    ?>
+
+        <div class="cards">
+
+            <div class="card">
+                <h3>Total Surveys</h3>
+                <p class="number"><?= $total_surveys; ?></p>
+                <small>My surveys: <?= $my_surveys; ?></small>
             </div>
 
-            <h4 style="margin: 0;">New surveys <span style="right: 0;float: right"><?= $new_surveys_chart; ?>%</span></h4>
-            <div class="bar">
-                <div class="bar-inner" style="width:<?= $new_surveys_chart; ?>%"></div>
-            </div>
-            
-            <h4 style="margin: 0;">Feedback Received <span style="right: 0;float: right"><?= $feedback_count_chart; ?>%</span></h4>
-            <div class="bar">
-                <div class="bar-inner" style="width:<?= $feedback_count_chart; ?>%"></div>
+            <div class="card">
+                <h3>Feedbacks Given</h3>
+                <p class="number"><?= $feedback_given; ?></p>
             </div>
 
         </div>
-    </fieldset>
+
+        <div class="actions">
+            <a href="<?= admin_url('post-new.php?post_type=survey'); ?>" class="btn">Create Survey</a>
+            <a href="<?= admin_url('admin.php?page=survey-responses'); ?>" class="btn">View Responses</a>
+            <a href="<?= admin_url('admin.php?page=survey-responses'); ?>" class="btn">Give Feedback</a>
+        </div>
+
+        <fieldset class="chart-container">
+            <legend><h3 style="margin: 0;">Stats</h3></legend>
+
+            <div class="bar-chart">
+                <h4 style="margin: 0;">My surveys <span style="right: 0;float: right"><?= $my_surveys_chart; ?>%</span></h4>
+                <div class="bar">
+                    <div class="bar-inner" style="width:<?= $my_surveys_chart; ?>%"></div>
+                </div>
+
+                <h4 style="margin: 0;">Feedback Given <span style="right: 0;float: right"><?= $feedback_given_chart; ?>%</span></h4>
+                <div class="bar">
+                    <div class="bar-inner" style="width:<?= $feedback_given_chart; ?>%"></div>
+                </div>
+            </div>
+        </fieldset>
 
     <?php endif; ?>
+</div>
 
 <?php 
     get_footer(); 
