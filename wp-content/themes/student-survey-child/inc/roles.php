@@ -12,16 +12,7 @@ add_action('init', function() {
             'manage_users' => false,
         ));
     }
-    // Teacher: créer/éditer surveys, gérer ses classes
-    if (!get_role('teacher')) {
-        add_role('teacher', 'Instructor', array(
-            'read' => true,
-            'edit_posts' => true,
-            'edit_surveys' => true,
-            'manage_classes' => true,
-            'manage_users' => false,
-        ));
-    }
+
     // Instructor: identique à teacher (pour compatibilité)
     if (!get_role('instructor')) {
         add_role('instructor', 'Instructor', array(

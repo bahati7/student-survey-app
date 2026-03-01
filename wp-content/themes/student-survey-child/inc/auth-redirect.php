@@ -7,11 +7,11 @@ add_filter('login_redirect', function($redirect_to, $request, $user) {
         if (in_array('administrator', $user->roles, true)) {
             return admin_url();
         }
-        if (in_array('teacher', $user->roles, true) || in_array('instructor', $user->roles, true)) {
-            return home_url('/dashboard/');
+        if (in_array('instructor', $user->roles, true)) {
+            return home_url("/dashboard/");
         }
         if (in_array('student', $user->roles, true)) {
-            return home_url('/');
+            return home_url("/dashboard/");
         }
     }
     return $redirect_to;
@@ -40,16 +40,12 @@ add_filter('show_admin_bar', function($show) {
     return $show;
 });
 
-// Block wp-admin for students and instructors (no admin for eux)
+// Block wp-admin only for students
 add_action('admin_init', function() {
-    if ( is_admin() && !defined('DOING_AJAX') ) {
+    if ( !defined('DOING_AJAX') ) {
         $user = wp_get_current_user();
         if ( in_array('student', (array) $user->roles) ) {
-            wp_redirect(home_url('/'));
-            exit;
-        }
-        if ( in_array('teacher', (array) $user->roles) || in_array('instructor', (array) $user->roles) ) {
-            wp_redirect(home_url('/dashboard/'));
+            wp_safe_redirect(home_url("/dashboard/"));
             exit;
         }
     }
@@ -59,21 +55,21 @@ add_action('template_redirect', function() {
     if (is_page('admin-only')) {
         $user = wp_get_current_user();
         if (!in_array('administrator', (array) $user->roles)) {
-            wp_redirect(home_url('/'));
+            wp_safe_redirect(home_url('/'));
             exit;
         }
     }
     if (is_page('instructor-only')) {
         $user = wp_get_current_user();
-        if (!in_array('teacher', (array) $user->roles) && !in_array('instructor', (array) $user->roles)) {
-            wp_redirect(home_url('/'));
+        if (!in_array('instructor', (array) $user->roles)) {
+            wp_safe_redirect(home_url('/dashboard/'));
             exit;
         }
     }
     if (is_page('student-only')) {
         $user = wp_get_current_user();
         if (!in_array('student', (array) $user->roles)) {
-            wp_redirect(home_url('/'));
+            wp_safe_redirect(home_url('/dashboard/'));
             exit;
         }
     }
