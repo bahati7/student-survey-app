@@ -42,10 +42,10 @@ add_filter('show_admin_bar', function($show) {
 
 // Block wp-admin only for students
 add_action('admin_init', function() {
-    if ( is_admin() && !defined('DOING_AJAX') ) {
+    if ( !defined('DOING_AJAX') ) {
         $user = wp_get_current_user();
         if ( in_array('student', (array) $user->roles) ) {
-            wp_redirect(home_url("/dashboard/"));
+            wp_safe_redirect(home_url("/dashboard/"));
             exit;
         }
     }
@@ -55,21 +55,21 @@ add_action('template_redirect', function() {
     if (is_page('admin-only')) {
         $user = wp_get_current_user();
         if (!in_array('administrator', (array) $user->roles)) {
-            wp_redirect(home_url('/'));
+            wp_safe_redirect(home_url('/'));
             exit;
         }
     }
     if (is_page('instructor-only')) {
         $user = wp_get_current_user();
         if (!in_array('instructor', (array) $user->roles)) {
-            wp_redirect(home_url("/dashboard/"));
+            wp_safe_redirect(home_url('/dashboard/'));
             exit;
         }
     }
     if (is_page('student-only')) {
         $user = wp_get_current_user();
         if (!in_array('student', (array) $user->roles)) {
-            wp_redirect(home_url("/dashboard/"));
+            wp_safe_redirect(home_url('/dashboard/'));
             exit;
         }
     }
