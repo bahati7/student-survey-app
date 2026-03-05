@@ -53,10 +53,10 @@ add_shortcode('dynamic_main_menu', function() {
         $dashboard = '';
         $role_label = '';
         if (in_array('administrator', $user->roles)) {
-            $dashboard = home_url('/dashboard/');
+            $dashboard = admin_url();
             $role_label = 'Admin';
         } elseif (in_array('teacher', $user->roles) || in_array('instructor', $user->roles)) {
-            $dashboard = home_url('/dashboard/teacher/');
+            $dashboard = admin_url();
             $role_label = 'Instructor';
         } elseif (in_array('student', $user->roles)) {
             $dashboard ='';
